@@ -1,0 +1,23 @@
+{
+  "types": [
+    {
+      "typeId": 1,
+      "name": "win"
+    },
+    {
+      "typeId": 2,
+      "name": "difference",
+      "rate": 10
+    },
+    {
+      "typeId": 3,
+      "name": "jocker",
+      "playerId": 2
+    },
+    {
+      "typeId": 4,
+      "name": "fastest",
+      "playerId": 1
+    }
+  ]
+}

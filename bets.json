@@ -1,0 +1,37 @@
+{
+  "bets": [
+    {
+      "betId": 1,
+      "typeId": 1,
+      "userId": 1,
+      "matchId": 1,
+      "sum": 210,
+      "teamId": 1
+    },
+    {
+      "betId": 2,
+      "typeId": 2,
+      "userId": 2,
+      "matchId": 1,
+      "sum": 100,
+      "teamId": 1
+    },
+    {
+      "betId": 3,
+      "typeId": 3,
+      "userId": 1,
+      "matchId": 1,
+      "sum": 200,
+      "teamId": 1
+    },
+    {
+      "betId": 4,
+      "typeId": 4,
+      "userId": 2,
+      "matchId": 1,
+      "sum": 100,
+      "teamId": 1,
+      "rate": 10
+    }
+  ]
+}

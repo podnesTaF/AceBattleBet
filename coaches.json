@@ -1,0 +1,16 @@
+{
+  "coaches": [
+    {
+      "coachId": 1,
+      "name": "Vitaliy",
+      "surname": "Voloshyn",
+      "teamId": 1
+    },
+    {
+      "coachId": 2,
+      "name": "Vladuslav",
+      "surname": "Popovich",
+      "teamId": 2
+    }
+  ]
+}

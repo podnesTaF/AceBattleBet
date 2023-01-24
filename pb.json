@@ -1,0 +1,52 @@
+{
+  "pbs": [
+    {
+      "id": 1,
+      "distance": 1500,
+      "time": 240,
+      "playerId": 1
+    },
+    {
+      "id": 2,
+      "distance": 800,
+      "time": 110,
+      "playerId": 1
+    },
+    {
+      "id": 3,
+      "distance": 1500,
+      "time": 245,
+      "playerId": 2
+    },
+    {
+      "id": 4,
+      "distance": 800,
+      "time": 120,
+      "playerId": 2
+    },
+    {
+      "id": 5,
+      "distance": 1500,
+      "time": 242,
+      "playerId": 3
+    },
+    {
+      "id": 6,
+      "distance": 800,
+      "time": 115,
+      "playerId": 3
+    },
+    {
+      "id": 7,
+      "distance": 800,
+      "time": 120,
+      "playerId": 4
+    },
+    {
+      "id": 8,
+      "distance": 400,
+      "time": 51,
+      "playerId": 4
+    }
+  ]
+}

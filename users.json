@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "userId": 1,
+      "name": "Michael",
+      "surname": "Jordan",
+      "dof": "16.02.1969",
+      "email": "jordan@gmail.com",
+      "password": "podnes",
+      "isActivated": true,
+      "balance": 1000
+    },
+    {
+      "userId": 2,
+      "name": "Yurii",
+      "surname": "Pidbebesnyi",
+      "dof": "05.12.1972",
+      "email": "podnes@gmail.com",
+      "password": "podnes",
+      "isActivated": true,
+      "balance": 800
+    }
+  ]
+}

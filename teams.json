@@ -1,0 +1,16 @@
+{
+  "teams": [
+    {
+      "teamId": 1,
+      "name": "Brussels",
+      "country": "Belgium",
+      "coachId": 1
+    },
+    {
+      "teamId": 2,
+      "name": "Luxemburg",
+      "country": "Luxemburg",
+      "coachId": 2
+    }
+  ]
+}
