@@ -22,6 +22,17 @@
     font-weight: 700;
     li {
       margin-right: 20px;
+      a {
+        color: white;
+        text-decoration: none;
+        font-variant: small-caps;
+        &:hover {
+          opacity: 0.9;
+        }
+        &:active {
+          transform: scale(0.95);
+        }
+      }
     }
   }
 }

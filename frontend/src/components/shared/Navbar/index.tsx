@@ -29,7 +29,11 @@ const Navbar = () => {
                         Teams
                     </Link>
                 </li>
-                <li>Players</li>
+                <li>
+                    <Link href={'/players'}>
+                        Players
+                    </Link>
+                </li>
             </ul>
             {!userData ? (
                 <ul>

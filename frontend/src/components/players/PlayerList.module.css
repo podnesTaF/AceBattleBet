@@ -1,0 +1,8 @@
+.playerList {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/*# sourceMappingURL=PlayerList.module.css.map */

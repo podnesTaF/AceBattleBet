@@ -3,10 +3,14 @@ import Cookies, {parseCookies} from 'nookies';
 import {UserApi} from './user';
 import axios from 'axios';
 import {TeamApi} from "@/api/team";
+import {PlayerApi} from "@/api/players";
+import {MatchApi} from "@/api/match";
 
 interface ApiReturnType {
     user: ReturnType<typeof UserApi>;
     team: ReturnType<typeof TeamApi>
+    player: ReturnType<typeof PlayerApi>
+    match: ReturnType<typeof MatchApi>
 }
 
 export const Api = (
@@ -27,7 +31,9 @@ export const Api = (
 
     return {
         user: UserApi(instance),
-        team: TeamApi(instance)
+        team: TeamApi(instance),
+        player: PlayerApi(instance),
+        match: MatchApi(instance)
     };
 
 };
