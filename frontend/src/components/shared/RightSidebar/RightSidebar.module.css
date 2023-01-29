@@ -1,0 +1,19 @@
+.container {
+  padding: 20px;
+  width: 20%;
+  color: white;
+  background-color: #11111d;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+.container .hidden {
+  visibility: hidden;
+}
+.container h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/*# sourceMappingURL=RightSidebar.module.css.map */

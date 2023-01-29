@@ -1,0 +1,36 @@
+.raceCard {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  align-items: center;
+  margin: 32px 0;
+  background-color: #1c1c2f;
+  border-radius: 12px;
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .date {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .rate {
+    width: 100%;
+    .rateItem {
+      display: flex;
+      .part {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: gold;
+        padding: 12px 16px;
+      }
+    }
+  }
+}

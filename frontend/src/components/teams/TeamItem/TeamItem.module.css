@@ -1,0 +1,43 @@
+.card {
+  width: 100%;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+.card img {
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+.card .container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.card .container h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+.card .container p {
+  margin: 0;
+  font-size: 14px;
+}
+.card .container .playerList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  list-style-type: none;
+}
+.card .container .playerList li {
+  margin: 0 10px 10px 0;
+}
+.card .container .playerList li h3 {
+  font-weight: 500;
+  font-size: 20px;
+  margin: 10px 15px;
+}
+.card .container .playerList li p {
+  font-size: 14px;
+  margin: 0 15px;
+}
+
+/*# sourceMappingURL=TeamItem.module.css.map */

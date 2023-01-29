@@ -1,0 +1,30 @@
+.competitionPreview {
+  background: url("/cup-benelux.jpg") no-repeat center center;
+  background-size: cover;
+  width: 905px;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+}
+.competitionPreview .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+  color: #fff;
+  z-index: 10;
+}
+.competitionPreview .item h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.competitionPreview .item p {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/*# sourceMappingURL=CompetitionIntro.module.css.map */

@@ -1,0 +1,105 @@
+[
+  {
+    "id": 1,
+    "name": "Benelux Cup",
+    "description": "The first European Ace Battle Mile competition",
+    "start_date": "2023-03-25",
+    "matches": [
+      {
+        "matchId": 1,
+        "teamOne": {
+          "teamId": 1,
+          "name": "Brussels",
+          "country": "Belgium",
+          "players": [
+            {
+              "playerId": 1,
+              "name": "Oleksii",
+              "surname": "Pidnebesnyi",
+              "dob": "16.06.2004",
+              "pb": [
+                {
+                  "distance": 1500,
+                  "time": 240
+                },
+                {
+                  "distance": 800,
+                  "time": 110
+                }
+              ],
+              "teamId": 1
+            },
+            {
+              "playerId": 2,
+              "name": "Maksym",
+              "surname": "Olyinuk",
+              "dob": "09.02.2003",
+              "pb": [
+                {
+                  "distance": 1500,
+                  "time": 240
+                },
+                {
+                  "distance": 800,
+                  "time": 121
+                }
+              ],
+              "teamId": 1,
+              "isJocker": true
+            }
+          ],
+          "coach": {
+            "name": "Vitaliy",
+            "surname": "Voloshyn"
+          }
+        },
+        "teamTwo": {
+          "teamId": 2,
+          "name": "Luxemburg",
+          "country": "Luxemburg",
+          "players": [
+            {
+              "playerId": 3,
+              "name": "Stas",
+              "surname": "Driapko",
+              "dob": "24.08.2005",
+              "pb": [
+                {
+                  "distance": 1500,
+                  "time": 242
+                },
+                {
+                  "distance": 800,
+                  "time": 115
+                }
+              ],
+              "teamId": 2
+            },
+            {
+              "playerId": 3,
+              "name": "Dima",
+              "surname": "Melnychenko",
+              "dob": "17.01.2005",
+              "pb": [
+                {
+                  "distance": 800,
+                  "time": 121
+                },
+                {
+                  "distance": 400,
+                  "time": 51
+                }
+              ],
+              "teamId": 2,
+              "isJocker": true
+            }
+          ],
+          "coach": {
+            "name": "Vladuslav",
+            "surname": "Popovich"
+          }
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+.raceCard {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  align-items: center;
+  margin: 32px 0;
+  background-color: #1c1c2f;
+  border-radius: 12px;
+}
+.raceCard h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.raceCard .date {
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.raceCard .rate {
+  width: 100%;
+}
+.raceCard .rate .rateItem {
+  display: flex;
+}
+.raceCard .rate .rateItem .part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gold;
+  padding: 12px 16px;
+}
+
+/*# sourceMappingURL=RaceCard.module.css.map */
