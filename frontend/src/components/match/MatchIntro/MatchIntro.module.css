@@ -1,0 +1,46 @@
+.matchIntro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 78vw;
+  background-color: #f5f5f5;
+  color: white;
+  margin: 0 auto;
+  position: relative;
+}
+.matchIntro__teams {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  z-index: 1;
+}
+.matchIntro__teams_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.matchIntro__teams_item h2 {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+.matchIntro__vs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  z-index: 1;
+}
+.matchIntro__date {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+  z-index: 1;
+}
+
+/*# sourceMappingURL=MatchIntro.module.css.map */

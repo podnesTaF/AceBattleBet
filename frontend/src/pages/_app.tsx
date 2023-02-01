@@ -5,10 +5,15 @@ import {theme} from "@/utils/mui-theme";
 import {wrapper} from "@/store";
 import {Api} from "@/api";
 import {setUserData} from "@/store/slices/userSlice";
+import React from "react";
+import Head from "next/head";
 
 function App({ Component, pageProps }: AppProps) {
   return (
       <ThemeProvider theme={theme}>
+          <Head>
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+          </Head>
         <Component {...pageProps} />
       </ThemeProvider>
   )

@@ -1,0 +1,36 @@
+.stat {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: black;
+  text-align: center;
+  margin: 30px;
+  color: white;
+  width: 30%;
+}
+.stat h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.stat_info {
+  display: flex;
+  flex-direction: column;
+}
+.stat_info_item {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  background-color: red;
+  color: white;
+  padding: 10px;
+}
+.stat_info_res {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+  padding: 10px;
+}
+
+/*# sourceMappingURL=MatchTeamStat.module.css.map */

@@ -1,0 +1,34 @@
+.stat {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: black;
+  text-align: center;
+  margin: 30px;
+  color: white;
+  width: 30%;
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  &_info {
+    display: flex;
+    flex-direction: column;
+    &_item {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      background-color: red;
+      color: white;
+      padding: 10px;
+    }
+    &_res {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      background-color: white;
+      color: black;
+      padding: 10px;
+    }
+  }
+}

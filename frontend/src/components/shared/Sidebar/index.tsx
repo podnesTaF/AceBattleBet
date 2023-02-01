@@ -3,7 +3,7 @@ import RaceCard from "@/components/bets/RaceCard/index";
 import styles from './Sidebar.module.css'
 
 interface SideBarProps {
-    isVisible?: boolean;
+    isHidden?: boolean;
 }
 
 const content = [
@@ -23,9 +23,9 @@ const content = [
     }
 
 ]
-const SideBar: React.FC<SideBarProps> = ({isVisible}) => {
+const SideBar: React.FC<SideBarProps> = ({isHidden}) => {
     return (
-        <div className={styles.sidebar}>
+        <div className={styles.sidebar} style={{display: isHidden ? 'none' : 'block'}}>
         <h2 className='text-2xl font-bold'>Closest Races</h2>
     {content.map((item) => {
         const biggerRate = item.rate1 > item.rate2 ? item.rate1 : item.rate2

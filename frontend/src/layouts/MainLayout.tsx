@@ -7,15 +7,16 @@ import {Container} from "@mui/material";
 
 interface MainLayoutProps {
     rightSideBarHidden?: boolean;
+    sideBarHidden?: boolean;
     children: React.ReactNode
 }
-const MainLayout: React.FC<MainLayoutProps> = ({children, rightSideBarHidden}) => {
+const MainLayout: React.FC<MainLayoutProps> = ({children, rightSideBarHidden, sideBarHidden}) => {
     return (
         <>
             <Navbar />
             <div className='wrapper'>
-                <SideBar />
-                <div>
+                <SideBar isHidden={sideBarHidden} />
+                <div style={{width: '100%'}}>
                     {children}
                 </div>
                 <RightSideBar isHidden={rightSideBarHidden} />

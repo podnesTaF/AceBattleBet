@@ -1,9 +1,12 @@
+import {IUser} from "@/utils/types/user";
+import {ITeam} from "@/utils/types/teams";
+
 export type IBet = {
     id: number;
     sum: number;
-    userId: number;
+    user: IUser;
     matchId: number;
-    teamId: number;
+    team: ITeam;
     type: BetType;
     differenceRate?: number;
     playerId?: number;

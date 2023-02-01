@@ -8,7 +8,9 @@ $primary-color: black;
 
 .wrapper {
     display: flex;
-    justify-content: space-between;
+    margin: auto;
+    background-color: #11111d;
+    width: 100%;
 }
 
 .overlay {
@@ -40,4 +42,9 @@ $primary-color: black;
 .title {
     margin: 20px 0;
     text-align: center;
+}
+
+.match__wrapper {
+    display: flex;
+    justify-content: space-between;
 }

@@ -6,6 +6,17 @@ export type ITeam = {
         players: {
             data: IPlayer[]
         };
+        coach: {
+            data: ICoach
+        };
+    }
+}
+
+export type ICoach = {
+    id: number;
+    attributes: {
+        name: string;
+        surname: string;
     }
 }
 

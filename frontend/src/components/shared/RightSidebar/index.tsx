@@ -7,7 +7,7 @@ interface RightSideBarProps {
 }
 const RightSideBar: React.FC<RightSideBarProps> = ({isHidden}) => {
     return (
-        <div className={styles.container}>
+        <div className={styles.container} style={{display: isHidden ? 'none' : 'block'}}>
             <div className={`${isHidden && 'hidden'}`}>
                 <h1>Your Recently Bets</h1>
                 <Card className='card'>
