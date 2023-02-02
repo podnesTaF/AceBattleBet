@@ -6,48 +6,5 @@
     text-align: center;
     color: white;
   }
-  .items {
-    display: flex;
-    box-shadow: 0 0 4px 4px rgba(0,0,0,0.2);
-    background-color: black;
-    padding: 16px;
-    border-radius: 10px;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    .item {
-      display: flex;
-      flex-direction: column;
-      width: 40%;
-      border-radius: 10px;
-      margin: 0 16px;
-      &:nth-child(1) {
-        background-color: #ee342c;
-      }
-      &:last-child {
-        background-color: gold;
-      }
-        .itemTitle {
-          font-size: 32px;
-          font-weight: 700;
-          margin: 12px;
-          color: white;
-        }
-        h3 {
-          color: white;
-          font-size: 24px;
-          margin: 4px 12px;
-          font-weight: 700;
-        }
-        ul {
-          color: white;
-          list-style: none;
-          li {
-            font-size: 18px;
-            font-weight: 500;
-            margin: 12px 20px;
-          }
-        }
-    }
-  }
+
 }

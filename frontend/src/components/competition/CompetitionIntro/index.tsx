@@ -1,11 +1,17 @@
 import React from "react";
 import styles from './CompetitionIntro.module.css'
-const CompetitionIntro = () => {
+
+interface CompetitionIntroProps {
+    name: string;
+    description: string;
+}
+
+const CompetitionIntro: React.FC<CompetitionIntroProps> = ({description,name}) => {
     return (
         <div className={styles.competitionPreview}>
             <div className={styles.item}>
-                <h1>Ace Battle Cup Benelux</h1>
-                <p>The first european Ace Battle Mile Competitions</p>
+                <h1>{name}</h1>
+                <p>{description}</p>
             </div>
             <div className='overlay'></div>
         </div>

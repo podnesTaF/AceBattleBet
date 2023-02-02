@@ -5,12 +5,15 @@ import axios from 'axios';
 import {TeamApi} from "@/api/team";
 import {PlayerApi} from "@/api/players";
 import {MatchApi} from "@/api/match";
+import {CompetitionApi} from "@/api/competition";
 
 interface ApiReturnType {
     user: ReturnType<typeof UserApi>;
     team: ReturnType<typeof TeamApi>
     player: ReturnType<typeof PlayerApi>
     match: ReturnType<typeof MatchApi>
+
+    competition: ReturnType<typeof CompetitionApi>
 }
 
 export const Api = (
@@ -33,7 +36,8 @@ export const Api = (
         user: UserApi(instance),
         team: TeamApi(instance),
         player: PlayerApi(instance),
-        match: MatchApi(instance)
+        match: MatchApi(instance),
+        competition: CompetitionApi(instance)
     };
 
 };

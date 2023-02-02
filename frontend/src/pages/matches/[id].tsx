@@ -15,10 +15,6 @@ interface MatchPageProps {
 
 const MatchPage: NextPage<MatchPageProps> = ({match, bets}) => {
 
-    useEffect(() => {
-        console.log(match)
-    }, [])
-
 
     return (
         <MainLayout rightSideBarHidden={true} sideBarHidden={true}>

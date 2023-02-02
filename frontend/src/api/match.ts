@@ -54,5 +54,18 @@ export const MatchApi = (instance: AxiosInstance) => ({
             }
         })
         return bets
-    }
+    },
+
+    async getMatchesByComp(id: number) {
+        const {data: {data}} = await instance.get('/matches?competition=' + id + '&populate=team_one.players,team_two.players,team_one.coach,team_two.coach');
+
+        const matches = data.map((match: any) => ({
+            id: match.id,
+            ...match.attributes,
+            team_one: match.attributes.team_one.data,
+            team_two: match.attributes.team_two.data,
+        }))
+
+        return matches;
+    },
 })

@@ -3,12 +3,13 @@ import {IMatch} from "@/utils/types/match";
 
 export const getSumAmount = (teamId: number, bets: IBet[]) => {
     console.log('getSumAmount', teamId, bets)
-    return bets.reduce((acc, bet) => {
+
+    return bets.length > 0 ? bets.reduce((acc, bet) => {
         if (bet.team.id === teamId && bet.type === BetType.win) {
             return acc + bet.sum
         }
         return acc
-    }, 0)
+    }, 0) : 0
 }
 
 export const getWinCofs = (teamOne_sum: number, teamTwo_sum: number) => {
@@ -22,6 +23,11 @@ export const getWinCofs = (teamOne_sum: number, teamTwo_sum: number) => {
         return [
             biggerSumCoof,
             smallerSumCoof
+        ]
+    } else if (teamOne_sum === teamTwo_sum) {
+        return [
+            2,
+            2
         ]
     } else {
         return [
@@ -37,13 +43,13 @@ export const useBetsPercentage = (teamOneId: number, teamTwoId: number, betsSumA
     const smallerPercentage = 100 - biggerPercentage
     if (betsSumAmount[teamOneId] > betsSumAmount[teamTwoId]) {
         return {
-            [teamOneId]: smallerPercentage,
-            [teamTwoId]: biggerPercentage
+            [teamOneId]: biggerPercentage,
+            [teamTwoId]: smallerPercentage
         }
     } else {
         return {
-            [teamOneId]: biggerPercentage,
-            [teamTwoId]: smallerPercentage
+            [teamOneId]: smallerPercentage,
+            [teamTwoId]: biggerPercentage
         }
     }
 }
