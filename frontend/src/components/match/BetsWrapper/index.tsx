@@ -3,7 +3,7 @@ import styles from './BetsWrapper.module.css'
 import BetsItem from "@/components/match/BetsItem";
 import {BetType, IBet} from "@/utils/types/bet";
 import {IMatch} from "@/utils/types/match";
-import {getWinCofs} from "@/utils/betsAlgoth";
+import {getSumAmount, getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
 
 interface BetsWrapperProps {
     match: IMatch;
@@ -11,49 +11,32 @@ interface BetsWrapperProps {
 }
 
 const BetsWrapper: React.FC<BetsWrapperProps> = ({match, bets}) => {
-    const [betsSumAmount, setBetsSumAmount] = useState({[match.team_one.id]: bets.reduce((acc, bet) => {
-            if (bet.team.id === match.team_one.id && bet.type === BetType.win) {
-                return acc + bet.sum
-            }
-            return acc
-        }, 0), [match.team_two.id]: bets.reduce((acc, bet) => {
-            if (bet.team.id === match.team_two.id && bet.type === BetType.win) {
-                return acc + bet.sum
-            }
-            return acc
-        }, 0)})
 
-    const [winCofs, setWinCofs] = useState<number[]>([])
-    const [width, setWidth] = useState({
-[match.team_one.id]: 0,
-[match.team_two.id]: 0
-    })
+
+    const [betsSumAmount, setBetsSumAmount] = useState({[match.team_one.id]: getSumAmount(match.team_one.id, bets), [match.team_two.id]: getSumAmount(match.team_two.id, bets)})
+
+    const [winCofs, setWinCofs] = useState<number[]>(getWinCofs(betsSumAmount[match.team_one.id], betsSumAmount[match.team_two.id]))
+    const [width, setWidth] = useState(useBetsPercentage(match.team_one.id, match.team_two.id, betsSumAmount))
 
     useEffect(() => {
-        setWinCofs(getWinCofs(betsSumAmount[match.team_one.id], betsSumAmount[match.team_two.id]))
-        const biggerPercentage = ((winCofs[0] / (winCofs[0] + winCofs[1])) * 100)
-        const smallerPercentage = 100 - biggerPercentage
-        if(betsSumAmount[match.team_one.id] > betsSumAmount[match.team_two.id]) {
-            setWidth({
-                [match.team_one.id]: biggerPercentage,
-                [match.team_two.id]: smallerPercentage
-            })
-        } else {
-            setWidth({
-                [match.team_one.id]: smallerPercentage,
-                [match.team_two.id]: biggerPercentage
-            })
-        }
-        setWidth([biggerPercentage, smallerPercentage])
-    }, [betsSumAmount])
+        setBetsSumAmount({[match.team_one.id]: getSumAmount(match.team_one.id, bets), [match.team_two.id]: getSumAmount(match.team_two.id, bets)})
+    }, [bets]);
+
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.item}>
                 <h2>Win</h2>
                 <div className={styles.bets_stat}>
-                    <BetsItem betSum={bet} width={width[match.team_one.id]}/>
-                    <BetsItem width={width[match.team_two.id]} />
+                    <BetsItem betCoof={winCofs[0]} betSum={betsSumAmount[match.team_one.id]} width={width[match.team_one.id]} color={'red'}/>
+                    <BetsItem betCoof={winCofs[1]} betSum={betsSumAmount[match.team_two.id]} width={width[match.team_two.id]} color={'gold'} />
+                </div>
+            </div>
+            <div className={styles.item}>
+                <h2>Difference</h2>
+                <div className={styles.bets_stat}>
+                    <BetsItem betCoof={winCofs[0]} betSum={betsSumAmount[match.team_one.id]} width={width[match.team_one.id]} color={'red'}/>
+                    <BetsItem betCoof={winCofs[1]} betSum={betsSumAmount[match.team_two.id]} width={width[match.team_two.id]} color={'gold'} />
                 </div>
             </div>
         </div>

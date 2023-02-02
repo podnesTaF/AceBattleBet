@@ -3,8 +3,27 @@ import {IBet} from "@/utils/types/bet";
 
 export const MatchApi = (instance: AxiosInstance) => ({
     async getAll() {
-        const {data: {data}} = await instance.get('/matches?populate=players');
-        return data;
+        const {data: {data}} = await instance.get('/matches?populate=bets.team,team_one,team_two');
+
+        console.log(data)
+
+        const matches = data.map((match: any) => ({
+            id: match.id,
+            ...match.attributes,
+            team_one: match.attributes.team_one.data,
+            team_two: match.attributes.team_two.data,
+            bets: [
+                ...match.attributes.bets.data.map((bet: any) => ({
+                    ...bet.attributes,
+                    team: bet.attributes.team.data,
+                }))
+            ],
+            time: match.attributes.time
+        }))
+
+        console.log(matches)
+
+        return matches;
     },
 
     async getFullMatch(id: number) {

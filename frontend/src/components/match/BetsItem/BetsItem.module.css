@@ -1,7 +1,8 @@
 .betsItem {
   background-color: red;
   color: white;
-  margin-right: 10px;
+  padding: 10px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=BetsItem.module.css.map */

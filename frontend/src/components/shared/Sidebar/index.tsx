@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import RaceCard from "@/components/bets/RaceCard/index";
 import styles from './Sidebar.module.css'
+import {useMatches} from "@/hooks/useMatches";
+import {getWinCofs} from "@/utils/betsAlgoth";
 
 interface SideBarProps {
     isHidden?: boolean;
@@ -24,16 +26,18 @@ const content = [
 
 ]
 const SideBar: React.FC<SideBarProps> = ({isHidden}) => {
+    const {matches, setMatches} = useMatches()
+
+    console.log('sidebar', matches)
+
     return (
         <div className={styles.sidebar} style={{display: isHidden ? 'none' : 'block'}}>
-        <h2 className='text-2xl font-bold'>Closest Races</h2>
-    {content.map((item) => {
-        const biggerRate = item.rate1 > item.rate2 ? item.rate1 : item.rate2
-        const lowerRate = biggerRate === item.rate1 ? item.rate2 : item.rate1
-        return <RaceCard key={item.id} date={item.date} name={item.name} biggerRate={biggerRate} lowerRate={lowerRate}/>
-    })}
-    </div>
-);
+            <h2 className='text-2xl font-bold'>Closest Races</h2>
+            {matches.map((item) => {
+                return <RaceCard key={item.id} date={item.time} name={`${item.team_one.attributes.name} vs ${item.team_two.attributes.name}`} teamOneId={item.team_one.id} teamTwoId={item.team_two.id} bets={item.bets}/>
+            })}
+        </div>
+    );
 };
 
 export default SideBar;

@@ -1,29 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import {BetType, IBet} from "@/utils/types/bet";
+import React from 'react';
 import styles from './BetsItem.module.css'
 
 interface BetsItemProps {
     betSum: number;
     betCoof: number;
     width?: number;
+    color?: "gold" | 'red'
 }
 
-const BetsItem: React.FC<BetsItemProps> = ({ width}) => {
-
-    // useEffect(() => {
-    //     setSum((prev: any) => {
-    //         return {
-    //             ...prev,
-    //             [teamId]: betSum
-    //         }
-    //     })
-    //     // console.log(width)
-    // },[])
+const BetsItem: React.FC<BetsItemProps> = ({ width, betSum, betCoof, color}) => {
 
 
     return (
-        <div className={styles.betsItem} style={{width: `${width}%`}}>
-            <h3>{0}</h3>
+        <div className={styles.betsItem} style={{width: `${width}%`, backgroundColor: color}}>
+            <h3>{betCoof}</h3>
         </div>
     );
 };

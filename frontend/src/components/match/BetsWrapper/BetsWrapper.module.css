@@ -13,6 +13,7 @@
 }
 .wrapper .item h2 {
   font-size: 2rem;
+  color: white;
 }
 .wrapper .item .bets_stat {
   display: flex;

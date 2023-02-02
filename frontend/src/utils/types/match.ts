@@ -8,4 +8,6 @@ export type IMatch = {
     name: string;
     location: string;
     competition: any;
+    time: string;
+    bets: IBet[]
 }

@@ -1,23 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import styles from './RaceCard.module.css';
+import {IBet} from "@/utils/types/bet";
+import {getSumAmount, getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
 
 interface RaceCardProps {
     date: string,
     name: string,
-    biggerRate: number,
-    lowerRate: number
+    bets: IBet[];
+    teamOneId: number;
+    teamTwoId: number;
 }
 
-const RaceCard: React.FC<RaceCardProps> = ({date, biggerRate, lowerRate, name}) => {
-    const [values, setValues] = useState<Number[]>([])
+const RaceCard: React.FC<RaceCardProps> = ({date, name, bets, teamTwoId, teamOneId}) => {
+    const [sumAmount, setSumAmount] = useState({[teamOneId]: getSumAmount(teamOneId, bets), [teamTwoId]: getSumAmount(teamTwoId, bets)})
 
-    useEffect(() => {
-        setValues(defineRateCof(biggerRate, lowerRate))
-    }, [])
-    const defineRateCof = (biggerRate: number, lowerRate: number) => {
-        let cof = +(100 / ((biggerRate / lowerRate) * 100)).toFixed(2)
-       return [cof * 100, 100 - cof * 100]
-    }
+    const [winCofs, setWinCofs] = useState(getWinCofs(sumAmount[teamOneId], sumAmount[teamTwoId]))
+
+    console.log(winCofs, 'winCofs')
+
+    const percentages = useBetsPercentage(teamOneId, teamTwoId, sumAmount)
+
 
     return (
         <div className={styles.raceCard}>
@@ -31,11 +33,11 @@ const RaceCard: React.FC<RaceCardProps> = ({date, biggerRate, lowerRate, name}) 
             <div className={styles.rate}>
                 <p>Win:</p>
                 <div className={styles.rateItem}>
-                    <div className={styles.part} style={{width: `${values[0]}%`, backgroundColor: 'red'}}>
-                        {biggerRate}
+                    <div className={styles.part} style={{width: `${percentages[teamOneId]}%`, backgroundColor: 'red'}}>
+                        <p>{winCofs[0]}</p>
                     </div>
-                    <div className={styles.part} style={{width: `${values[1]}%`}}>
-                        {lowerRate}
+                    <div className={styles.part} style={{width: `${percentages[teamTwoId]}%`, backgroundColor:'gold'}}>
+                        <p>{winCofs[1]}</p>
                     </div>
                 </div>
             </div>
