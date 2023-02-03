@@ -39,7 +39,6 @@ export const getServerSideProps:GetServerSideProps = async (ctx) => {
     try {
         const id = ctx?.params?.id || 1
         const match = await Api(ctx).match.getFullMatch(+id)
-        console.log('hereis', match)
 
         const bets = await Api(ctx).match.getMatchBets(+id)
 

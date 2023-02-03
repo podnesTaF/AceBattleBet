@@ -13,7 +13,7 @@ const BetsItem: React.FC<BetsItemProps> = ({ width, betSum, betCoof, color}) => 
 
     return (
         <div className={styles.betsItem} style={{width: `${width}%`, backgroundColor: color}}>
-            <h3>{betCoof}</h3>
+            <h3>{betCoof.toFixed(2)}</h3>
         </div>
     );
 };

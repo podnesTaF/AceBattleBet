@@ -6,6 +6,7 @@ import {TeamApi} from "@/api/team";
 import {PlayerApi} from "@/api/players";
 import {MatchApi} from "@/api/match";
 import {CompetitionApi} from "@/api/competition";
+import {BetsApi} from "@/api/bets";
 
 interface ApiReturnType {
     user: ReturnType<typeof UserApi>;
@@ -14,16 +15,14 @@ interface ApiReturnType {
     match: ReturnType<typeof MatchApi>
 
     competition: ReturnType<typeof CompetitionApi>
+    bets: ReturnType<typeof BetsApi>
 }
 
 export const Api = (
     ctx?: NextPageContext | GetServerSidePropsContext
 ): ApiReturnType => {
     const cookies = ctx ? Cookies.get(ctx) : parseCookies();
-    console.log(cookies)
     const token = cookies.authToken;
-
-    console.log(token)
 
     const headers = token ? {Authorization: 'Bearer ' + token} : {}
 
@@ -37,7 +36,8 @@ export const Api = (
         team: TeamApi(instance),
         player: PlayerApi(instance),
         match: MatchApi(instance),
-        competition: CompetitionApi(instance)
+        competition: CompetitionApi(instance),
+        bets: BetsApi(instance)
     };
 
 };

@@ -33,7 +33,6 @@ export default function Home() {
         (async () => {
            try {
                const data = await Api().team.getAll()
-               console.log(data)
            } catch (err) {
                 console.log(err)
            }

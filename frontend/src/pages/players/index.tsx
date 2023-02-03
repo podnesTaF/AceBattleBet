@@ -10,7 +10,6 @@ interface PlayerPageProps {
 }
 
 const PlayersPage: NextPage<PlayerPageProps> = ({players}) => {
-    console.log(players)
     return (
         <MainLayout>
             <h1 className='title'>Battle Mile Players</h1>
@@ -22,8 +21,6 @@ const PlayersPage: NextPage<PlayerPageProps> = ({players}) => {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
     try {
         const players = await Api(ctx).player.getAll()
-
-        console.log('here is players', players)
         return {
             props: {
                 players

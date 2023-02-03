@@ -5,7 +5,7 @@ import AuthWrapper from "@/components/auth/AuthWrapper";
 
 const Login = () => {
     return (
-        <MainLayout rightSideBarHidden={true}>
+        <MainLayout rightSideBarHidden={true} variant={'light'}>
             <AuthWrapper formType={'login'}>
                 <LoginForm />
             </AuthWrapper>

@@ -9,12 +9,14 @@ interface MainLayoutProps {
     rightSideBarHidden?: boolean;
     sideBarHidden?: boolean;
     children: React.ReactNode
+
+    variant?: 'light' | 'dark';
 }
-const MainLayout: React.FC<MainLayoutProps> = ({children, rightSideBarHidden, sideBarHidden}) => {
+const MainLayout: React.FC<MainLayoutProps> = ({children, rightSideBarHidden, sideBarHidden, variant}) => {
     return (
         <>
             <Navbar />
-            <div className='wrapper'>
+            <div className='wrapper' style={{backgroundColor: variant === 'light' ? "white" : 'black'}}>
                 <SideBar isHidden={sideBarHidden} />
                 <div style={{width: '100%'}}>
                     {children}

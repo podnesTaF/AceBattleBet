@@ -5,8 +5,6 @@ export const MatchApi = (instance: AxiosInstance) => ({
     async getAll() {
         const {data: {data}} = await instance.get('/matches?populate=bets.team,team_one,team_two');
 
-        console.log(data)
-
         const matches = data.map((match: any) => ({
             id: match.id,
             ...match.attributes,
@@ -21,8 +19,6 @@ export const MatchApi = (instance: AxiosInstance) => ({
             time: match.attributes.time
         }))
 
-        console.log(matches)
-
         return matches;
     },
 
@@ -36,8 +32,6 @@ export const MatchApi = (instance: AxiosInstance) => ({
             team_two: data.attributes.team_two.data,
             competition: data.attributes.competition.data,
         }
-
-        console.log(match);
 
         return match;
     },

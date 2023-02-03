@@ -27,6 +27,11 @@ export const RegisterSchema = yup
             .required('password is required')
     })
 
+export const CreateBetSchema = yup.object().shape({
+    sum: yup.number().required('Please provide sum'),
+    team: yup.number().required('Please provide team')
+})
+
 
 // export const ChangeUserDataSchema = yup.object().shape({
 //     fullName: yup.string().required('Please provide name'),

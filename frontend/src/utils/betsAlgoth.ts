@@ -1,9 +1,6 @@
 import {BetType, IBet} from "@/utils/types/bet";
-import {IMatch} from "@/utils/types/match";
 
 export const getSumAmount = (teamId: number, bets: IBet[]) => {
-    console.log('getSumAmount', teamId, bets)
-
     return bets.length > 0 ? bets.reduce((acc, bet) => {
         if (bet.team.id === teamId && bet.type === BetType.win) {
             return acc + bet.sum
@@ -17,7 +14,6 @@ export const getWinCofs = (teamOne_sum: number, teamTwo_sum: number) => {
     const smallerSum = Math.min(teamOne_sum, teamTwo_sum);
     const biggerSumCoof = +(smallerSum / biggerSum).toFixed(2) + 1
     const smallerSumCoof = +((biggerSum + smallerSum) / smallerSum).toFixed(2)
-    console.log(teamOne_sum, teamTwo_sum)
 
     if(teamOne_sum > teamTwo_sum) {
         return [

@@ -19,3 +19,12 @@ export enum BetType {
     fastest = 'fastest',
 
 }
+
+export type CreateBetDto = {
+    sum: number;
+    match: number;
+    team: number;
+    user: number;
+    type: BetType;
+
+}

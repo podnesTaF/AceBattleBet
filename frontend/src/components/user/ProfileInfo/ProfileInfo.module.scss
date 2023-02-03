@@ -1,0 +1,35 @@
+.profile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: white;
+  .avatar {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    .username {
+      padding-right: 10px;
+      margin-bottom: 20px;
+      font-size: 32px;
+      border-right: 1px solid black;
+    }
+    .email {
+      padding-right: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border-right: 1px solid black;
+    }
+    .dob {
+      padding-right: 10px;
+      margin-bottom: 20px;
+    }
+  }
+}

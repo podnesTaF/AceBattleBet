@@ -54,7 +54,9 @@ const Navbar = () => {
                                 color='warning'>Logout</Button>
                     </li>
                     <li>
-                        <Button variant='contained' color='error'>
+                        <Button
+                            onClick={() => router.push(`/profile/${userData.id}`)}
+                            variant='contained' color='error'>
                             Profile
                         </Button>
                     </li>

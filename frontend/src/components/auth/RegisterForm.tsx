@@ -33,13 +33,6 @@ export default function SignUp() {
     const onSubmit = async (dto: any) => {
         if (!dto) {
             setErrorMessage('something went wrong')
-        } else {
-            console.log({
-                email: dto.email,
-                password: dto.password,
-                username: dto.username,
-                dateOfBirth: dto.dateOfBirth,
-            });
         }
 
         try {
@@ -50,7 +43,6 @@ export default function SignUp() {
             });
             setErrorMessage('');
             dispatch(setUserData(data.user));
-            console.log(data)
             router.back()
         } catch (e: any) {
             setErrorMessage(e.response.data.message)

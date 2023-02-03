@@ -1,0 +1,21 @@
+.wrapper {
+  padding: 20px;
+  .title {
+    font-size: 28px;
+    text-align: center;
+  }
+  .item {
+    margin: 20px auto;
+    width: 100%;
+    select {
+        width: 200px;
+    }
+  }
+}
+
+.alert {
+  position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
