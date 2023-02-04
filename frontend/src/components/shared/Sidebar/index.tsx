@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import RaceCard from "@/components/bets/RaceCard/index";
 import styles from './Sidebar.module.css'
 import {useMatches} from "@/hooks/useMatches";
-import {getWinCofs} from "@/utils/betsAlgoth";
 
 interface SideBarProps {
     isHidden?: boolean;

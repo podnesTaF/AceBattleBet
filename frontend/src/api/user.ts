@@ -23,4 +23,9 @@ export const UserApi = (instance: AxiosInstance) => ({
         const { data } = await instance.get<IUser>('users/me');
         return data;
     },
+
+    async updateMyBalance(id: number, newBalance: number) {
+        const { data } = await instance.put<IUser>('users/' + id, {balance: newBalance});
+        return data
+    }
 });

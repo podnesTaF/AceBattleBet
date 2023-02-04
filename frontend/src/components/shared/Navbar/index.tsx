@@ -7,11 +7,14 @@ import Link from "next/link";
 import {useAppDispatch, useAppSelector} from "@/hooks/useAppHooks";
 import {deleteUserData, selectUserData} from "@/store/slices/userSlice";
 import {destroyCookie} from "nookies";
+import AddCardIcon from '@mui/icons-material/AddCard';
+import AddBalance from "@/components/shared/AddBalance";
 
 const Navbar = () => {
     const router = useRouter()
     const userData = useAppSelector(selectUserData)
     const dispatch = useAppDispatch();
+    const [open, setOpen] = React.useState(false);
     const logout = () => {
         destroyCookie(null, 'authToken')
         dispatch(deleteUserData());
@@ -23,7 +26,7 @@ const Navbar = () => {
             <Link href={'/'}>
                 <Image src="/main-logo-abb.png" alt="main-logo" height={100} width={300}/>
             </Link>
-            <ul>
+            <ul className={styles.first}>
                 <li>
                     <Link href={'/teams'}>
                         Teams
@@ -48,19 +51,30 @@ const Navbar = () => {
                     </li>
                 </ul>
             ) : (
-                <ul>
-                    <li>
-                        <Button onClick={logout} variant="contained"
-                                color='warning'>Logout</Button>
-                    </li>
-                    <li>
-                        <Button
-                            onClick={() => router.push(`/profile/${userData.id}`)}
-                            variant='contained' color='error'>
-                            Profile
-                        </Button>
-                    </li>
-                </ul>
+                <>
+                    <ul>
+                        <li>Balance: {userData.balance}</li>
+                        <li>
+                            <Button onClick={() => setOpen(true)} variant='contained'
+                                    color='secondary'>
+                                <AddCardIcon />
+                            </Button>
+                        </li>
+                        <li>
+                            <Button onClick={logout} variant="contained"
+                                    color='warning'>Logout</Button>
+                        </li>
+                        <li>
+                            <Button
+                                onClick={() => router.push(`/profile/${userData.id}`)}
+                                variant='contained' color='error'>
+                                Profile
+                            </Button>
+                        </li>
+                    </ul>
+                    <AddBalance open={open} setOpen={setOpen} />
+                </>
+
             )}
         </header>
     );

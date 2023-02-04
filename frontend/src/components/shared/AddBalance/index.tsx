@@ -7,17 +7,13 @@ import {TransitionProps} from '@mui/material/transitions';
 import {FormField} from "@/components/form/FormField";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import {ITeam} from "@/utils/types/teams";
 import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import {betSchema} from "@/utils/formValidator";
-import OptionField from "@/components/form/OptionField";
+import {addBalanceSchema} from "@/utils/formValidator";
 import {Api} from "@/api";
 import {useAppDispatch, useAppSelector} from "@/hooks/useAppHooks";
 import {changeBalance, selectUserData} from "@/store/slices/userSlice";
-import {BetType} from "@/utils/types/bet";
-
-import styles from './CreateBetDialog.module.css'
+import styles from './AddBalance.module.css'
 import {Alert, AlertTitle} from "@mui/material";
 import {useState} from "react";
 
@@ -30,15 +26,12 @@ const Transition = React.forwardRef(function Transition(
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-interface CreateBetDialogProps {
-    teamOne: ITeam;
-    teamTwo: ITeam;
+interface AddBalanceProps {
     open: boolean;
     setOpen: Function;
-    matchId: number
 }
 
-const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open, setOpen, matchId}) => {
+const AddBalance: React.FC<AddBalanceProps> = ({open, setOpen}) => {
     const [isVisible, setIsVisible] = useState(false)
 
     const userData = useAppSelector(selectUserData)
@@ -46,22 +39,15 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
 
     const form = useForm({
         mode: 'onChange',
-        resolver: yupResolver(betSchema(userData!.balance).CreateBetSchema),
+        resolver: yupResolver(addBalanceSchema),
     });
 
     const onSubmit = async (dto: any) => {
-
-        const data = {
-            sum: dto.sum,
-            match: +matchId,
-            team: +dto.team,
-            user: userData!.id,
-            type: BetType.win
-        }
         try {
-            const bet = await Api().bets.create(data)
-            const updatedUserData = await Api().user.updateMyBalance(userData!.id, userData!.balance - data.sum)
-            dispatch(changeBalance(updatedUserData.balance))
+            const data = await Api().user.updateMyBalance(userData!.id, userData!.balance + dto.sum)
+
+            dispatch(changeBalance(data.balance))
+
         } catch (e) {
             console.log(e)
         }
@@ -72,8 +58,6 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
         setTimeout(() => {
             setIsVisible(false)
         }, 2000)
-
-        // clearTimeout(timer)
     }
 
     const handleClose = () => {
@@ -85,7 +69,7 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
             {isVisible && <div className={styles.alert}>
                 <Alert severity="success">
                     <AlertTitle>Success</AlertTitle>
-                    You successfully created a bet — <strong>check it out!</strong>
+                    You successfully added money to your balance
                 </Alert>
             </div>}
             <Dialog
@@ -100,10 +84,7 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
                     <FormProvider {...form}>
                         <Box component="form" onSubmit={form.handleSubmit(onSubmit)} sx={{mt: 2}}>
                             <Grid className={styles.item} item xs={12}>
-                                <FormField name={'sum'} label={'Bet Sum'} type={'number'}/>
-                            </Grid>
-                            <Grid className={styles.item} item xs={12}>
-                                <OptionField name={'team'} label={'Select Team'} options={[teamOne, teamTwo]} />
+                                <FormField name={'sum'} label={'Add sum'} type={'number'}/>
                             </Grid>
                             <Button
                                 type="submit"
@@ -124,4 +105,4 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
 }
 
 
-export default CreateBetDialog
+export default AddBalance;

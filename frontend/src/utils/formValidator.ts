@@ -27,9 +27,15 @@ export const RegisterSchema = yup
             .required('password is required')
     })
 
-export const CreateBetSchema = yup.object().shape({
-    sum: yup.number().required('Please provide sum'),
-    team: yup.number().required('Please provide team')
+export const betSchema = (balance:number) => ({
+    CreateBetSchema: yup.object().shape({
+        sum: yup.number().min(0).max(balance, 'Entered sum is more than you have').required('Please, provide the sum'),
+        team: yup.number().required('Please provide team')
+    })
+})
+
+export const addBalanceSchema = yup.object().shape({
+    sum: yup.number().min(0).required('Please, provide the sum')
 })
 
 

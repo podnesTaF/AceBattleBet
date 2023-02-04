@@ -21,6 +21,9 @@ export const userSlice = createSlice({
         deleteUserData: (state) => {
             state.data = null
         },
+        changeBalance: (state, action: PayloadAction<number>) => {
+            state.data!.balance = action.payload;
+        }
     },
     extraReducers: {
         [HYDRATE]: (state, action) => {
@@ -34,9 +37,9 @@ export const userSlice = createSlice({
 
 export const { setUserData } = userSlice.actions;
 export const {deleteUserData} = userSlice.actions
+export const {changeBalance} = userSlice.actions
 
 export const selectUserData = (state: RootState) => state.user.data;
-
 
 
 export const userReducer = userSlice.reducer;

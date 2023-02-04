@@ -16,12 +16,17 @@
     margin: 12px;
     justify-content: space-between;
     list-style-type: none;
-    width: 15%;
+    width:35%;
+    align-items: center;
     font-size: 32px;
     color: #fff;
     font-weight: 700;
+    &.first {
+      width: 15%;
+    }
     li {
       margin-right: 20px;
+      font-size: 24px;
       a {
         color: white;
         text-decoration: none;

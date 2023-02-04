@@ -3,6 +3,9 @@ import Navbar from "@/components/shared/Navbar/index";
 import SideBar from "@/components/shared/Sidebar/index";
 import RightSideBar from "@/components/shared/RightSidebar/index";
 import {Container} from "@mui/material";
+import {GetServerSideProps} from "next";
+import {Api} from "@/api";
+import {IBet} from "@/utils/types/bet";
 
 
 interface MainLayoutProps {
@@ -26,5 +29,4 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, rightSideBarHidden, si
         </>
     );
 };
-
 export default MainLayout;
