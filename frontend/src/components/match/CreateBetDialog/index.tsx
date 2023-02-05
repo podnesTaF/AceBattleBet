@@ -20,6 +20,8 @@ import {BetType} from "@/utils/types/bet";
 import styles from './CreateBetDialog.module.css'
 import {Alert, AlertTitle} from "@mui/material";
 import {useState} from "react";
+import {selectTeams, setCoefficients, setSum, setWidth} from "@/store/slices/betSlice";
+import {getSumAmount, getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -41,6 +43,8 @@ interface CreateBetDialogProps {
 const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open, setOpen, matchId}) => {
     const [isVisible, setIsVisible] = useState(false)
 
+    const teams = useAppSelector(selectTeams)
+
     const userData = useAppSelector(selectUserData)
     const dispatch = useAppDispatch();
 
@@ -61,7 +65,10 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
         try {
             const bet = await Api().bets.create(data)
             const updatedUserData = await Api().user.updateMyBalance(userData!.id, userData!.balance - data.sum)
+            // dispatch(setSum([getSumAmount(match.team_one.id, bets), getSumAmount(match.team_two.id, bets)]))
             dispatch(changeBalance(updatedUserData.balance))
+            // dispatch(setCoefficients(getWinCofs(teams[0].sum, teams[1].sum)))
+            // dispatch(setWidth(useBetsPercentage([teams[0].sum, teams[1].sum])))
         } catch (e) {
             console.log(e)
         }

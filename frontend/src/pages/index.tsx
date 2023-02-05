@@ -6,7 +6,8 @@ import IntroCard from "@/components/MainPage/IntroCard";
 import CompetitionCard from "@/components/competition/CompetitionCard/index";
 import {useEffect} from "react";
 import {Api} from "@/api";
-import Link from "next/link";
+import {GetServerSideProps, NextPage} from "next";
+import {useRouter} from "next/router";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -17,27 +18,14 @@ const content = [{name: 'Explore teams', color: 'white', position: 'left', id: 1
     id: 2
 } as const, {name: 'Make your bet', color: '#ee342c', position: 'left', id: 3} as const]
 
-const competitions = [
-    {
-        name: 'Cup Benelux',
-        raceCount: 10,
-        betCount: 20,
-        teams: 8,
-        id: 1
-    }
-]
+interface HomeProps {
+    competitions: any
+}
 
-export default function Home() {
+const Home: NextPage<HomeProps> = ({competitions}) => {
+    const router = useRouter()
 
-    useEffect(() => {
-        (async () => {
-           try {
-               const data = await Api().team.getAll()
-           } catch (err) {
-                console.log(err)
-           }
-        })()
-    }, [])
+    console.log('c', competitions)
 
     return (
         <>
@@ -53,13 +41,36 @@ export default function Home() {
                         ))}
                     </div>
                     <h1>Competitions</h1>
-                    {competitions.map((comp) => {
+                    {competitions.map((comp: any) => {
                         return <CompetitionCard
+                            id={comp.id}
                             key={comp.id}
-                            name={comp.name} raceCount={comp.raceCount} betsCount={comp.betCount} teams={comp.teams}/>
+                            name={comp.name} raceCount={comp.matches} betsCount={comp.betsCount} teams={comp.teams}/>
                     })}
                 </main>
             </MainLayout>
         </>
     )
 }
+
+export default Home;
+
+export const getServerSideProps:GetServerSideProps = async (ctx) => {
+    try {
+        const competitions = await Api().competition.getAll()
+
+        return {
+            props: {
+                competitions
+            }
+        }
+    } catch (err) {
+        console.log('index page', err)
+        return {
+            props: {
+
+            }
+        }
+    }
+}
+

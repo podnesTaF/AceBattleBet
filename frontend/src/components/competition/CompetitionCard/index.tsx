@@ -8,17 +8,18 @@ import Typography from '@mui/material/Typography';
 
 
 interface CompetitionCardProps {
+    id: number;
     name: string;
     raceCount: number;
     betsCount: number;
     teams: number;
 }
 
-const CompetitionCard: React.FC<CompetitionCardProps> = ({betsCount, raceCount, teams, name}) => {
+const CompetitionCard: React.FC<CompetitionCardProps> = ({id, betsCount, raceCount, teams, name}) => {
     const router = useRouter()
 
     return (
-        <Card onClick={() => router.push('/competitions/1')} className={styles.card}>
+        <Card onClick={() => router.push('/competitions/' + id)} className={styles.card}>
             <CardMedia
                 sx={{height: 200}}
                 image="/cup-benelux.jpg"

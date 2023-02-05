@@ -12,7 +12,6 @@ interface BetsStatProps {
 const BetsStat: React.FC<BetsStatProps> = ({bets}) => {
 
     const userData = useAppSelector(selectUserData)
-    console.log(bets)
 
     const [betsSum, setBetsSum] = React.useState(bets.reduce((acc, bet) => acc + bet.sum, 0))
 

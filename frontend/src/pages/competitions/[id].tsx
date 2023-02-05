@@ -15,6 +15,10 @@ interface CompetitionProps {
 
 const Competition: NextPage<CompetitionProps> = ({competition, matches}) => {
 
+    useEffect(() => {
+        console.log('comp page render')
+    }, []);
+
     return (
         <MainLayout>
             <main className='bg-black h-full'>

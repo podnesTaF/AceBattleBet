@@ -15,7 +15,7 @@ const MatchTeam: React.FC<MatchTeamProps> = ({match, team}) => {
             <h3>Players:</h3>
             <ul>
                 {match[team].attributes.players.data.map((player: any) => (
-                    <li>{player.attributes.name} {player.attributes.surname}</li>
+                    <li key={player.id}>{player.attributes.name} {player.attributes.surname}</li>
                 ))}
             </ul>
         </div>

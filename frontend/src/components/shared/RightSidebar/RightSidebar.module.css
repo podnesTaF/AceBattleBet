@@ -15,5 +15,15 @@
   font-weight: 700;
   margin-bottom: 20px;
 }
+.container .betWrap {
+  list-style-type: none;
+}
+.container .betWrap .bet {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #1a1a2e;
+  color: white;
+  border-radius: 10px;
+}
 
 /*# sourceMappingURL=RightSidebar.module.css.map */

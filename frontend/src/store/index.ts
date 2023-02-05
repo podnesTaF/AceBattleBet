@@ -3,11 +3,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 import {userReducer} from "@/store/slices";
+import {betsReducer} from "@/store/slices/betSlice";
 
 export function makeStore() {
     return configureStore({
         reducer: {
             user: userReducer,
+            bets: betsReducer
         },
     });
 }

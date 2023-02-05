@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import styles from './RightSidebar.module.css'
-import {Card} from "@mui/material";
 import {IBet} from "@/utils/types/bet";
 import {useAppSelector} from "@/hooks/useAppHooks";
 import {selectUserData} from "@/store/slices/userSlice";
@@ -18,7 +17,6 @@ const RightSideBar: React.FC<RightSideBarProps> = ({isHidden}) => {
             const userBets = await Api().bets.getBetsByUser(me!.id)
             setBets(userBets)
         })()
-        console.log(bets)
     }, []);
 
 
@@ -26,9 +24,13 @@ const RightSideBar: React.FC<RightSideBarProps> = ({isHidden}) => {
         <div className={styles.container} style={{display: isHidden ? 'none' : 'block'}}>
             <div className={`${isHidden && 'hidden'}`}>
                 <h1>Your Recently Bets</h1>
-                {bets ? bets.map((bet) => (
-                    <Card key={bet.id} className={styles.bet}>{bet.team} - sum: {bet.sum}</Card>
-                )) : <h2>Enter Your account to see bets</h2>}
+                {bets ? <ul className={styles.betWrap}>
+                    {
+                        bets.map(bet => (
+                            <li key={bet.id} className={styles.bet}>{bet.sum} points</li>
+                        ))
+                    }
+                </ul> : <h2>Enter Your account to see bets</h2>}
             </div>
         </div>
     );

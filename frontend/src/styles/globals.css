@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #11111d;
+}
+
 .wrapper {
   display: flex;
   margin: auto;

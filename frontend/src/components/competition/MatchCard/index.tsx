@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Card} from "@mui/material";
 import {IMatch} from "@/utils/types/match";
 import styles from './MatchCard.module.css'
@@ -11,6 +11,9 @@ interface MatchCardProps {
 
 const MatchCard: React.FC<MatchCardProps> = ({match}) => {
     const router = useRouter()
+    useEffect(() => {
+        console.log('matches card render')
+    }, []);
 
     return (
         <div>
