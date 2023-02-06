@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {ResponseFullMatch} from "@/models/match";
+import {ResponseAllMatches, ResponseFullMatch} from "@/models/match";
 import {HYDRATE} from "next-redux-wrapper";
 
 
@@ -20,6 +20,14 @@ export const matchApi = createApi({
                 params: {
                     populate: 'competition,team_one.players.pbs,team_two.players.pbs,team_one.coach,team_two.coach',
                     fields: "time"
+                }
+            }),
+        }),
+        fetchAllMatches: build.query<ResponseAllMatches, void>({
+            query: () => ({
+                url: '/matches',
+                params: {
+                    populate: '/matches?populate=bets.team,team_one,team_two'
                 }
             }),
         })

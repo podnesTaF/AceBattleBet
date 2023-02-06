@@ -19,6 +19,7 @@ export type IMatch = {
         }
     };
     time: string;
+    bets: IBet[];
 }
 
 export type ResponseFullMatch = {
@@ -45,4 +46,20 @@ export type ResponseFullMatch = {
             }
         }
     }
+}
+
+export type ResponseAllMatches = {
+    data: {
+        id: number;
+        attributes: {
+            time: string;
+            bets: IBet[];
+            team_one: {
+                data: ITeam
+            };
+            team_two: {
+                data: ITeam
+            }
+        }
+    }[]
 }

@@ -7,4 +7,6 @@ export type IMatch = {
     team_two: ITeam
     competition: any;
     time: string;
+
+    bets: IBet[];
 }

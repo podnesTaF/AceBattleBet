@@ -14,11 +14,11 @@ interface RaceCardProps {
 }
 
 const RaceCard: React.FC<RaceCardProps> = ({matchId, date, name, bets, teamTwoId, teamOneId}) => {
-    const [sumAmount, setSumAmount] = useState({[teamOneId]: getSumAmount(teamOneId, bets), [teamTwoId]: getSumAmount(teamTwoId, bets)})
+    const [sumAmount, setSumAmount] = useState([getSumAmount(teamOneId, bets), getSumAmount(teamTwoId, bets)])
 
-    const [winCofs, setWinCofs] = useState(getWinCofs(sumAmount[teamOneId], sumAmount[teamTwoId]))
+    const [winCofs, setWinCofs] = useState(getWinCofs(sumAmount[0], sumAmount[1]))
 
-    const percentages = useBetsPercentage(teamOneId, teamTwoId, sumAmount)
+    const percentages = useBetsPercentage(sumAmount)
 
     const router = useRouter()
 
@@ -34,10 +34,10 @@ const RaceCard: React.FC<RaceCardProps> = ({matchId, date, name, bets, teamTwoId
             <div className={styles.rate}>
                 <p>Win:</p>
                 <div className={styles.rateItem}>
-                    <div className={styles.part} style={{width: `${percentages[teamOneId]}%`, backgroundColor: 'red'}}>
+                    <div className={styles.part} style={{width: `${percentages[0]}%`, backgroundColor: 'red'}}>
                         <p>{winCofs[0].toFixed(2)}</p>
                     </div>
-                    <div className={styles.part} style={{width: `${percentages[teamTwoId]}%`, backgroundColor:'gold'}}>
+                    <div className={styles.part} style={{width: `${percentages[1]}%`, backgroundColor:'gold'}}>
                         <p>{winCofs[1].toFixed(2)}</p>
                     </div>
                 </div>

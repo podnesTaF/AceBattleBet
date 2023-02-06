@@ -23,9 +23,6 @@ interface HomeProps {
 }
 
 const Home: NextPage<HomeProps> = ({competitions}) => {
-    const router = useRouter()
-
-    console.log('c', competitions)
 
     return (
         <>
