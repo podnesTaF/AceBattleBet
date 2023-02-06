@@ -33,19 +33,19 @@ export const getWinCofs = (teamOne_sum: number, teamTwo_sum: number) => {
     }
 }
 
-export const useBetsPercentage = (teamOneId: number, teamTwoId: number, betsSumAmount: any) => {
-    const coofs = getWinCofs(betsSumAmount[teamOneId], betsSumAmount[teamTwoId])
+export const useBetsPercentage = (betsSumAmount: any) => {
+    const coofs = getWinCofs(betsSumAmount[0], betsSumAmount[1])
     const biggerPercentage = ((coofs[0] / (coofs[0] + coofs[1])) * 100)
     const smallerPercentage = 100 - biggerPercentage
-    if (betsSumAmount[teamOneId] > betsSumAmount[teamTwoId]) {
-        return {
-            [teamOneId]: biggerPercentage,
-            [teamTwoId]: smallerPercentage
-        }
+    if (betsSumAmount[0] > betsSumAmount[1]) {
+        return [
+            biggerPercentage,
+            smallerPercentage
+        ]
     } else {
-        return {
-            [teamOneId]: smallerPercentage,
-            [teamTwoId]: biggerPercentage
-        }
+        return [
+            smallerPercentage,
+            biggerPercentage
+        ]
     }
 }

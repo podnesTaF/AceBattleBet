@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {GetServerSideProps, NextPage} from "next";
 import {Api} from "@/api";
 import {IMatch} from "@/utils/types/match";
@@ -7,6 +7,9 @@ import MatchIntro from "@/components/match/MatchIntro";
 import MatchTeamStat from "@/components/match/MatchTeamStat";
 import {IBet} from "@/utils/types/bet";
 import BetsWrapper from "@/components/match/BetsWrapper";
+import {getSumAmount, getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
+import {useAppDispatch, useAppSelector} from "@/hooks/useAppHooks";
+import {selectTeams, setCoefficients, setSum, setTeamIds, setWidth} from "@/store/slices/betSlice";
 
 interface MatchPageProps {
     match: IMatch;
@@ -14,6 +17,22 @@ interface MatchPageProps {
 }
 
 const MatchPage: NextPage<MatchPageProps> = ({match, bets}) => {
+    const dispatch = useAppDispatch();
+    const teams = useAppSelector(selectTeams)
+    const [currMatch, setCurrMatch] = useState<IMatch>()
+
+
+    useEffect(() => {
+        setCurrMatch(match)
+    }, []);
+
+
+    useEffect(() => {
+        dispatch(setTeamIds([match.team_one.id, match.team_two.id]))
+        dispatch(setSum([getSumAmount(match.team_one.id, bets), getSumAmount(match.team_two.id, bets)]))
+        dispatch(setCoefficients(getWinCofs(teams[0].sum, teams[1].sum)))
+        dispatch(setWidth(useBetsPercentage([teams[0].sum, teams[1].sum])))
+    }, [currMatch])
 
 
     return (

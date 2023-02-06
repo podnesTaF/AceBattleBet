@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './BetsItem.module.css'
 
 interface BetsItemProps {
@@ -9,6 +9,11 @@ interface BetsItemProps {
 }
 
 const BetsItem: React.FC<BetsItemProps> = ({ width, betSum, betCoof, color}) => {
+
+
+    // useEffect(() => {
+    //     console.log(betCoof, betSum)
+    // }, []);
 
 
     return (
