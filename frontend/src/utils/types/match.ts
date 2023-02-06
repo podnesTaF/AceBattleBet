@@ -5,9 +5,6 @@ export type IMatch = {
     id: number;
     team_one: ITeam
     team_two: ITeam
-    name: string;
-    location: string;
     competition: any;
     time: string;
-    bets: IBet[]
 }

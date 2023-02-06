@@ -7,48 +7,49 @@ import MatchIntro from "@/components/match/MatchIntro";
 import MatchTeamStat from "@/components/match/MatchTeamStat";
 import {IBet} from "@/utils/types/bet";
 import BetsWrapper from "@/components/match/BetsWrapper";
-import {getSumAmount, getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
-import {useAppDispatch, useAppSelector} from "@/hooks/useAppHooks";
-import {selectTeams, setCoefficients, setSum, setTeamIds, setWidth} from "@/store/slices/betSlice";
+import {matchApi} from "@/api/MatchService";
+import {getIMatch} from "@/utils/match";
+import {useRouter} from "next/router";
 
 interface MatchPageProps {
     match: IMatch;
     bets: IBet[];
 }
 
-const MatchPage: NextPage<MatchPageProps> = ({match, bets}) => {
-    const dispatch = useAppDispatch();
-    const teams = useAppSelector(selectTeams)
-    const [currMatch, setCurrMatch] = useState<IMatch>()
+const MatchPage: NextPage<MatchPageProps> = ({bets}) => {
+    const router = useRouter();
+    const {id} = router.query;
+    if(!id) return null;
+    const {data: data, error, isLoading} = matchApi.useFetchFullMatchQuery(+id);
 
-
-    useEffect(() => {
-        setCurrMatch(match)
-    }, []);
-
+    const [match, setMatch] = useState<IMatch>();
 
     useEffect(() => {
-        dispatch(setTeamIds([match.team_one.id, match.team_two.id]))
-        dispatch(setSum([getSumAmount(match.team_one.id, bets), getSumAmount(match.team_two.id, bets)]))
-        dispatch(setCoefficients(getWinCofs(teams[0].sum, teams[1].sum)))
-        dispatch(setWidth(useBetsPercentage([teams[0].sum, teams[1].sum])))
-    }, [currMatch])
-
+        if (data) {
+            setMatch(getIMatch(data));
+        }
+    }, [data])
 
     return (
         <MainLayout rightSideBarHidden={true} sideBarHidden={true}>
-            <MatchIntro date={match.competition.attributes.date} teamOne={{
-                name: match.team_one.attributes.name,
-                country: match.team_one.attributes.country
-            }} teamTwo={{
-                name: match.team_two.attributes.name,
-                country: match.team_two.attributes.country
-            }}/>
-            <div className='match__wrapper'>
-                <MatchTeamStat team={match.team_one} />
-                <BetsWrapper match={match} bets={bets} />
-                <MatchTeamStat team={match.team_two} />
-            </div>
+            {match && !isLoading && data ? (
+                   <>
+                       <MatchIntro date={match.competition.attributes.date} teamOne={{
+                           name: match.team_one.attributes.name,
+                           country: match.team_one.attributes.country
+                       }} teamTwo={{
+                           name: match.team_two.attributes.name,
+                           country: match.team_two.attributes.country
+                       }}/>
+                       <div className='match__wrapper'>
+                           <MatchTeamStat team={match.team_one} />
+                           <BetsWrapper data={data} bets={bets} />
+                           <MatchTeamStat team={match.team_two} />
+                       </div>
+                   </>
+            ) : (
+                <div style={{color: 'white'}}>Loading...</div>
+                )}
         </MainLayout>
     )
 };
@@ -58,7 +59,6 @@ export const getServerSideProps:GetServerSideProps = async (ctx) => {
     try {
         const id = ctx?.params?.id || 1
         const match = await Api(ctx).match.getFullMatch(+id)
-
         const bets = await Api(ctx).match.getMatchBets(+id)
 
         return {

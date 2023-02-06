@@ -6,16 +6,33 @@ import {IMatch} from "@/utils/types/match";
 import {getSumAmount, getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
 import CreateBetDialog from "@/components/match/CreateBetDialog";
 import {useDispatch} from "react-redux";
-import {useAppSelector} from "@/hooks/useAppHooks";
-import {selectTeams, setSum} from "@/store/slices/betSlice";
+import {useAppDispatch, useAppSelector} from "@/hooks/useAppHooks";
+import {selectTeams, setCoefficients, setSum, setTeamIds, setWidth} from "@/store/slices/betSlice";
+import {ResponseFullMatch} from "@/models/match";
+import {getIMatch} from "@/utils/match";
 interface BetsWrapperProps {
-    match: IMatch;
+    data: ResponseFullMatch;
     bets: IBet[];
 }
 
-const BetsWrapper: React.FC<BetsWrapperProps> = ({match, bets}) => {
+const BetsWrapper: React.FC<BetsWrapperProps> = ({data, bets}) => {
+    const dispatch = useAppDispatch();
     const teams = useAppSelector(selectTeams)
     const [open, setOpen] = useState(false)
+    const [match, setMatch] = useState<IMatch>(getIMatch(data));
+
+    useEffect(() => {
+       setMatch(getIMatch(data));
+    }, []);
+
+
+    useEffect(() => {
+        dispatch(setTeamIds([match.team_one.id, match.team_two.id]))
+        dispatch(setSum([getSumAmount(match.team_one.id, bets), getSumAmount(match.team_two.id, bets)]))
+        dispatch(setCoefficients(getWinCofs(teams[0].sum, teams[1].sum)))
+        dispatch(setWidth(useBetsPercentage([teams[0].sum, teams[1].sum])))
+    }, [match]);
+
 
     return (
         <div className={styles.wrapper}>
