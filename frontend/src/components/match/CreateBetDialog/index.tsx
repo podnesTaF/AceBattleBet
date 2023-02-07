@@ -19,9 +19,9 @@ import {BetType} from "@/utils/types/bet";
 
 import styles from './CreateBetDialog.module.css'
 import {Alert, AlertTitle} from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {addBet, selectTeams, setCoefficients, setSum, setWidth} from "@/store/slices/betSlice";
-import {getSumAmount, getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
+import {getPossibleWin, getSumAmount, getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -41,11 +41,20 @@ interface CreateBetDialogProps {
 }
 
 const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open, setOpen, matchId}) => {
-    const [isVisible, setIsVisible] = useState(false)
+    const [isVisible, setIsVisible] = useState(false);
+    const [sum, setSum] = useState(0);
+    const [teamId, setTeamId] = useState(0);
 
-    const teams = useAppSelector(selectTeams)
+    const [possibleWin, setPossibleWin] = useState(0);
 
-    const userData = useAppSelector(selectUserData)
+    useEffect(() => {
+        setPossibleWin(getPossibleWin(teams, sum, +teamId))
+    }, [sum, teamId])
+
+
+    const teams = useAppSelector(selectTeams);
+
+    const userData = useAppSelector(selectUserData);
     const dispatch = useAppDispatch();
 
     const form = useForm({
@@ -59,7 +68,9 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
             match: +matchId,
             team: +dto.team,
             user: userData!.id,
-            type: BetType.win
+            type: BetType.win,
+            coefficient: teams.find((team: any) => team.id === +dto.team)?.coefficient,
+            possibleWin,
         }
         try {
             const bet = await Api().bets.create(data)
@@ -106,10 +117,13 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
                     <FormProvider {...form}>
                         <Box component="form" onSubmit={form.handleSubmit(onSubmit)} sx={{mt: 2}}>
                             <Grid className={styles.item} item xs={12}>
-                                <FormField name={'sum'} label={'Bet Sum'} type={'number'}/>
+                                <FormField setSum={setSum} name={'sum'} label={'Bet Sum'} type={'number'}/>
                             </Grid>
                             <Grid className={styles.item} item xs={12}>
-                                <OptionField name={'team'} label={'Select Team'} options={[teamOne, teamTwo]} />
+                                <OptionField setTeamId={setTeamId} name={'team'} label={'Select Team'} options={[teamOne, teamTwo]} />
+                            </Grid>
+                            <Grid className={styles.item} item xs={12}>
+                                <h3>Possible win: {possibleWin}</h3>
                             </Grid>
                             <Button
                                 type="submit"

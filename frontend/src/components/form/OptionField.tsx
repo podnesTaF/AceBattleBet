@@ -8,9 +8,11 @@ interface OptionFieldProps {
     label: string;
 
     options: ITeam[];
+
+    setTeamId?: Function;
 }
 
-const OptionField: React.FC<OptionFieldProps> = ({name, label, options}) => {
+const OptionField: React.FC<OptionFieldProps> = ({name, label, options, setTeamId}) => {
     const { register, formState } = useFormContext();
 
     return (
@@ -18,6 +20,7 @@ const OptionField: React.FC<OptionFieldProps> = ({name, label, options}) => {
             {...register(name)}
             id="outlined-select-currency"
             select
+            onChange={(e) => setTeamId && setTeamId(e.target.value)}
             name={name}
             label={label}
             SelectProps={{

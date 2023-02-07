@@ -1,36 +1,35 @@
 import React, {useEffect} from 'react';
 import styles from './RightSidebar.module.css'
-import {IBet} from "@/utils/types/bet";
 import {useAppSelector} from "@/hooks/useAppHooks";
 import {selectUserData} from "@/store/slices/userSlice";
 import {Api} from "@/api";
+import {useFetchBetsByUserQuery} from "@/services/BetsService";
+import {IBet} from "@/models/bets";
 
 interface RightSideBarProps {
     isHidden?: boolean;
 }
 const RightSideBar: React.FC<RightSideBarProps> = ({isHidden}) => {
     const me = useAppSelector(selectUserData)
-    const [bets, setBets] = React.useState<IBet[]>([])
-
-    useEffect(() => {
-        (async () => {
-            const userBets = await Api().bets.getBetsByUser(me!.id)
-            setBets(userBets)
-        })()
-    }, []);
-
+    const {data, error, isLoading} = useFetchBetsByUserQuery(me!.id)
 
     return (
         <div className={styles.container} style={{display: isHidden ? 'none' : 'block'}}>
             <div className={`${isHidden && 'hidden'}`}>
                 <h1>Your Recently Bets</h1>
-                {bets ? <ul className={styles.betWrap}>
+                {isLoading && <h2>Loading...</h2>}
+                {error && <h2>Enter Your account to see bets</h2>}
+                {data && <ul className={styles.betWrap}>
                     {
-                        bets.map(bet => (
-                            <li key={bet.id} className={styles.bet}>{bet.sum} points</li>
+                        data.data.map(bet => (
+                            <li key={bet.id} className={styles.bet}>
+                                <p>{bet.attributes.sum} points</p>
+                                <p>{bet.attributes?.coefficient}</p>
+                                <p>{bet.attributes?.possibleWin}</p>
+                            </li>
                         ))
                     }
-                </ul> : <h2>Enter Your account to see bets</h2>}
+                </ul>}
             </div>
         </div>
     );

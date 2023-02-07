@@ -10,24 +10,32 @@ interface PlayerItemProps {
 
 const PlayerItem: React.FC<PlayerItemProps> = ({player}) => {
     return (
-        <div className={styles.playerItem}>
-            <div className={styles.playerItem__img}>
-                <Avatar>
-                    {player.attributes.name[0]}
-                </Avatar>
+        <>
+            <tr className={styles.info}>
+                <td>{player.id}</td>
+                <td>{player.attributes.name}</td>
+                <td>{player.attributes.surname}</td>
+                <td>{player.attributes.team.data.attributes.name}</td>
+                <td>{player.attributes.nationality}</td>
+                <td>{player.attributes.dateOfBirth}</td>
+                <td>{player.attributes.team.data.attributes.coach.data.attributes.name} {player.attributes.team.data.attributes.coach.data.attributes.surname}</td>
+                <td className={styles.details}>Details</td>
+            </tr>
+            <div className={styles.extendedInfo}>
+                <div className={styles.extendedHead}>
+                    <h3>Player's Personal Bests:</h3>
+                    <h3 className={styles.category}>Category: {player.attributes.category}</h3>
+                </div>
+                <div className={styles.pbsList}>
+                    {player.attributes.pbs.map((pb, index) => (
+                        <div key={pb.id} className={styles.pbsItem}>
+                            <h4>{pb.distance}</h4>
+                            <p>{getMin(pb.time)}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
-            <div className={styles.playerItem__info}>
-                <h3>{player.attributes.name} {player.attributes.surname}</h3>
-                <p>{player.attributes.dateOfBirth}</p>
-            </div>
-            <div className={styles.playerItem__stat}>
-                {player.attributes.pbs.map((pb, index) => (
-                    <div key={index} className={styles.playerItem__stat_item}>
-                        <h3>{pb.distance} m : {getMin(pb.time)}</h3>
-                    </div>
-                ))}
-            </div>
-        </div>
+        </>
     );
 };
 

@@ -1,6 +1,6 @@
 import {AxiosInstance} from "axios";
 import {IBet} from "@/utils/types/bet";
-import {matchApi} from "@/api/MatchService";
+import {matchApi} from "@/services/MatchService";
 
 export const MatchApi = (instance: AxiosInstance) => ({
     async getAll() {

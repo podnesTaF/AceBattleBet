@@ -6,7 +6,7 @@ export const getSumAmount = (teamId: number, bets: IBet[]) => {
             return acc + bet.sum
         }
         return acc
-    }, 0) : 0
+    }, 0) : 10
 }
 
 export const getWinCofs = (teamOne_sum: number, teamTwo_sum: number) => {
@@ -48,4 +48,14 @@ export const useBetsPercentage = (betsSumAmount: any) => {
             biggerPercentage
         ]
     }
+}
+
+export const getPossibleWin = (teams: any, sum?: number, teamId?: number) => {
+    if (sum && teamId) {
+        const teamCoef = teams.find((team: any) => team.id === teamId).coefficient
+        return +(sum * teamCoef).toFixed(2)
+    } else if (sum) {
+        return +(teams[0].coefficient * sum).toFixed(2)
+    }
+    else return 0
 }

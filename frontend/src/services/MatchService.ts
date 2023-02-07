@@ -1,18 +1,8 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {ResponseAllMatches, ResponseFullMatch} from "@/models/match";
-import {HYDRATE} from "next-redux-wrapper";
+import {api} from "@/services/api";
 
 
-export const matchApi = createApi({
-    reducerPath: 'matchApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:1337/api',
-    }),
-    extractRehydrationInfo(action, { reducerPath }) {
-        if (action.type === HYDRATE) {
-            return action.payload[reducerPath]
-        }
-    },
+export const matchApi = api.injectEndpoints({
     endpoints: (build) => ({
         fetchFullMatch: build.query<ResponseFullMatch, number>({
             query: (id: number) => ({
@@ -33,3 +23,8 @@ export const matchApi = createApi({
         })
     })
 })
+
+export const {
+    useFetchFullMatchQuery,
+    useFetchAllMatchesQuery,
+} = matchApi

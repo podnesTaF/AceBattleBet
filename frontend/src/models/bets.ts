@@ -1,5 +1,19 @@
 import {IUser} from "@/utils/types/user";
 import {ITeam} from "@/utils/types/teams";
+import {BetType} from "@/utils/types/bet";
+
+export type ResponsePureBets = {
+    data: {
+        id: number;
+        attributes: {
+            sum: number;
+            type: BetType;
+            createdAt: string;
+            coefficient?: number;
+            possibleWin?: number;
+        };
+    }[]
+}
 
 export type IBet = {
     id: number;
@@ -12,21 +26,4 @@ export type IBet = {
     playerId?: number;
     coefficient?: number;
     possibleWin?: number;
-}
-
-export enum BetType {
-    win = 'win',
-    difference = 'difference',
-    joker = 'joker',
-    fastest = 'fastest',
-
-}
-
-export type CreateBetDto = {
-    sum: number;
-    match: number;
-    team: number;
-    user: number;
-    type: BetType;
-
 }

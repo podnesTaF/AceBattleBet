@@ -7,7 +7,7 @@ import MatchIntro from "@/components/match/MatchIntro";
 import MatchTeamStat from "@/components/match/MatchTeamStat";
 import {IBet} from "@/utils/types/bet";
 import BetsWrapper from "@/components/match/BetsWrapper";
-import {matchApi} from "@/api/MatchService";
+import {matchApi} from "@/services/MatchService";
 import {getIMatch} from "@/utils/match";
 import {useRouter} from "next/router";
 

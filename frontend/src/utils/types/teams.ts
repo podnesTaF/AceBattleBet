@@ -28,6 +28,11 @@ export type IPlayer = {
         dateOfBirth: string;
         isJoker: boolean;
         pbs: IPbs[];
+        team: {
+            data: ITeam
+        },
+        nationality: string;
+        category: "U18" | "U20" | "U23" | "SENIOR";
     }
 }
 
