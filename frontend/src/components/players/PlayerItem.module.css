@@ -10,7 +10,6 @@
 .info td {
   font-size: 16px;
   padding: 0.5rem;
-  text-align: center;
 }
 .info td.details {
   color: gray;
@@ -18,32 +17,12 @@
 
 .extendedInfo {
   border: rgba(0, 0, 0, 0.3);
-  width: 100%;
   background-color: white;
-  display: flex;
-  flex-direction: column;
 }
-.extendedInfo .extendedHead {
+.extendedInfo .headerWrap {
   display: flex;
   justify-content: space-between;
-  margin: 10px 15px;
-}
-.extendedInfo .extendedHead h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0;
-}
-.extendedInfo .extendedHead .pbsList {
-  display: flex;
-  justify-content: space-between;
-  max-width: 50%;
-  margin: 20px 50px;
-}
-.extendedInfo .extendedHead .pbsList .pbsItem {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-right: 10px;
 }
 
 /*# sourceMappingURL=PlayerItem.module.css.map */

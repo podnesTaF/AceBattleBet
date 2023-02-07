@@ -3,16 +3,18 @@ import {ITeam} from "@/utils/types/teams";
 import {BetType} from "@/utils/types/bet";
 
 export type ResponsePureBets = {
-    data: {
-        id: number;
-        attributes: {
-            sum: number;
-            type: BetType;
-            createdAt: string;
-            coefficient?: number;
-            possibleWin?: number;
-        };
-    }[]
+    data: IPureBet[]
+}
+
+export type IPureBet = {
+    id: number;
+    attributes: {
+        sum: number;
+        type: BetType;
+        createdAt: string;
+        coefficient?: number;
+        possibleWin?: number;
+    };
 }
 
 export type IBet = {

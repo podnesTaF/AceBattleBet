@@ -32,7 +32,7 @@ export type IPlayer = {
             data: ITeam
         },
         nationality: string;
-        category: "U18" | "U20" | "U23" | "SENIOR";
+        age_group: "U18" | "U20" | "U23" | "SENIOR";
     }
 }
 

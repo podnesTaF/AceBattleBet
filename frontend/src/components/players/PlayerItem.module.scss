@@ -9,7 +9,6 @@
   td {
     font-size: 16px;
     padding: 0.5rem;
-    text-align: center;
     &.details {
       color: gray;
     }
@@ -18,31 +17,10 @@
 
 .extendedInfo {
   border: rgba(0,0,0,0.3);
-  width: 100%;
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  .extendedHead {
+  .headerWrap {
     display: flex;
     justify-content: space-between;
-    margin: 10px 15px;
-    h3 {
-      font-size: 20px;
-      font-weight: 700;
-      margin: 0;
-    }
-
-    .pbsList {
-      display: flex;
-      justify-content: space-between;
-      max-width: 50%;
-      margin: 20px 50px;
-      .pbsItem {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-right: 10px;
-      }
-    }
+    align-items: center;
   }
 }

@@ -25,14 +25,12 @@ const RaceCard: React.FC<RaceCardProps> = ({matchId, date, name, bets, teamTwoId
     return (
         <div className={styles.raceCard} onClick={() => router.push(`/matches/${matchId}`)}>
             <h3 className='text-xl'>{name}</h3>
-            <div>
-                <p>Date:</p>
-                <div className={styles.date}>
-                    <p>{date}</p>
-                </div>
+            <div className={styles.dateWrap}>
+                <h4>Date:</h4>
+                <p> {date}</p>
             </div>
             <div className={styles.rate}>
-                <p>Win:</p>
+                <h4>Win:</h4>
                 <div className={styles.rateItem}>
                     <div className={styles.part} style={{width: `${percentages[0]}%`, backgroundColor: 'red'}}>
                         <p>{winCofs[0].toFixed(2)}</p>

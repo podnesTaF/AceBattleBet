@@ -4,7 +4,7 @@ import {matchApi} from "@/services/MatchService";
 
 export const MatchApi = (instance: AxiosInstance) => ({
     async getAll() {
-        const {data: {data}} = await instance.get('/matches?populate=bets.team,team_one,team_two');
+        const {data: {data}} = await instance.get('/matches?populate=bets.team,team_one,team_two&pagination[pageSize]=3')
 
         const matches = data.map((match: any) => ({
             id: match.id,
@@ -52,7 +52,7 @@ export const MatchApi = (instance: AxiosInstance) => ({
     },
 
     async getMatchesByComp(id: number) {
-        const {data: {data}} = await instance.get('/matches?competition=' + id + '&populate=team_one.players,team_two.players,team_one.coach,team_two.coach');
+        const {data: {data}} = await instance.get('/matches?filters[competition][id][$eq]=' + id + '&populate=team_one.players,team_two.players,team_one.coach,team_two.coach');
 
         const matches = data.map((match: any) => ({
             id: match.id,

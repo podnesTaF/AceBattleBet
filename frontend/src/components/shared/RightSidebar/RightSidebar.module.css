@@ -1,8 +1,8 @@
 .container {
   padding: 20px;
-  width: 25%;
+  width: 35%;
+  background-color: white;
   color: white;
-  background-color: #11111d;
   height: 100vh;
   position: sticky;
   top: 0;
@@ -14,6 +14,7 @@
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 20px;
+  color: #11111d;
 }
 .container .betWrap {
   list-style-type: none;

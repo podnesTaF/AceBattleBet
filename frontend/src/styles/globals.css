@@ -4,14 +4,10 @@
   box-sizing: border-box;
 }
 
-html {
-  background-color: #11111d;
-}
-
 .wrapper {
   display: flex;
   margin: auto;
-  background-color: #11111d;
+  background-color: white;
   width: 100%;
 }
 
@@ -28,7 +24,7 @@ html {
 }
 
 .index-main {
-  background-color: #11111d;
+  background-color: white;
   padding-bottom: 20px;
 }
 .index-main h1 {
@@ -42,8 +38,7 @@ html {
 }
 
 .title {
-  margin: 20px 0;
-  text-align: center;
+  margin: 20px;
   color: white;
 }
 

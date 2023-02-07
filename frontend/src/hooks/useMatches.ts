@@ -8,7 +8,6 @@ export const useMatches = () => {
     useEffect(() => {
         (async () => {
             try {
-
                 const arr = await Api().match.getAll()
                 setMatches(arr)
             } catch (err) {

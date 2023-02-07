@@ -31,7 +31,6 @@ const Home: NextPage<HomeProps> = ({competitions}) => {
             </Head>
             <MainLayout>
                 <main className='index-main'>
-                    <Image src='/main-page.jpg' alt='main logo' width={905} height={500} className='main-img'/>
                     <div className='main-wrap'>
                         {content.map(item => (
                             <IntroCard key={item.id} color={item.color} content={item.name} position={item.position}/>
