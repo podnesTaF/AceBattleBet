@@ -4,8 +4,8 @@ import {Meta} from "@/models/players";
 
 export type IMatch = {
     id: number;
-    team_one: ITeam
-    team_two: ITeam
+    team_one: ITeam;
+    team_two: ITeam;
     name: string;
     location: string;
     competition: {
@@ -27,6 +27,7 @@ export type ResponseMatch = {
     id: number;
     attributes: {
         time: string;
+        name: string;
         bets: IBet[];
         team_one: {
             data: ITeam
@@ -41,6 +42,7 @@ export type ResponseFullMatch = {
     data: {
         id: number;
         attributes: {
+            name: string;
             time: string;
             competition: {
                 data: {

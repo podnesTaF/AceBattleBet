@@ -1,35 +1,37 @@
 .profile {
-  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 20px;
-  background-color: white;
   .avatar {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     margin-bottom: 20px;
   }
   .info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    width: 200px;
-    .username {
-      padding-right: 10px;
-      margin-bottom: 20px;
-      font-size: 32px;
-      border-right: 1px solid black;
-    }
-    .email {
-      padding-right: 10px;
-      margin-bottom: 20px;
-      font-size: 16px;
-      border-right: 1px solid black;
-    }
-    .dob {
-      padding-right: 10px;
-      margin-bottom: 20px;
+    border: 1px solid #ccc;
+    width: 500px;
+
+    .infoItem {
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+      &:not(:last-child) {
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
+      }
+      h3 {
+        width: 100%;
+        padding: 5px 10px;
+      }
+      p {
+        width: 100%;
+        padding: 5px 10px;
+        background-color: #cccccc;
+        color: gray;
+      }
     }
   }
 }

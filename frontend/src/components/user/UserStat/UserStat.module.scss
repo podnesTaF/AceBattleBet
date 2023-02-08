@@ -1,0 +1,30 @@
+.stats {
+  padding: 10px;
+  border: 1px solid #ccc;
+  max-width: 400px;
+  width: 100%;
+  align-self: end;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .item {
+      text-align: center;
+      padding: 5px;
+      h3 {
+        font-size: 28px;
+        margin-bottom: 5px;
+      }
+      h4 {
+        font-size: 18px;
+      }
+    }
+  }
+}

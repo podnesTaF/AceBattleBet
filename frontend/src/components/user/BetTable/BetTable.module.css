@@ -1,0 +1,15 @@
+.container {
+  margin-top: 20px;
+  margin-right: 10px;
+}
+.container thead {
+  background-color: #ee342c;
+  color: white;
+}
+.container thead th {
+  font-size: 18px;
+  color: white;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=BetTable.module.css.map */

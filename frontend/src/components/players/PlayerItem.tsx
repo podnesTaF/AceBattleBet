@@ -1,5 +1,5 @@
 import React from 'react';
-import {IPlayer} from "@/utils/types/teams";
+import {IPlayer} from "@/models/players";
 import styles from './PlayerItem.module.css'
 import {getMin} from "@/utils/time";
 import {Collapse, IconButton, Table, TableBody, TableCell, TableHead, TablePagination, TableRow} from "@mui/material";

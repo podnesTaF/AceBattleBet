@@ -61,7 +61,7 @@
 
 .title {
   margin: 20px 0;
-  color: black;
+  color: gray;
 }
 
 .match__wrapper {
@@ -74,6 +74,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  position: relative;
+}
+.profile__balance {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=globals.css.map */

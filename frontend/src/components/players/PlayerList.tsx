@@ -1,7 +1,6 @@
 import React from 'react';
 import {IPlayer} from "@/utils/types/teams";
 import styles from './PlayerList.module.css'
-import {getMin} from "@/utils/time";
 import PlayerItem from "@/components/players/PlayerItem";
 import {
     Pagination,

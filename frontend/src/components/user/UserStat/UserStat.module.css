@@ -1,0 +1,32 @@
+.stats {
+  padding: 10px;
+  border: 1px solid #ccc;
+  max-width: 400px;
+  width: 100%;
+  align-self: end;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+.stats h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.stats .content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.stats .content .item {
+  text-align: center;
+  padding: 5px;
+}
+.stats .content .item h3 {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+.stats .content .item h4 {
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=UserStat.module.css.map */

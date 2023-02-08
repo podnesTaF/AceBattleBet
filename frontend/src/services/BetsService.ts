@@ -1,6 +1,5 @@
 import {api} from './api'
-import {ResponsePureBets} from "@/models/bets";
-import qs from 'qs';
+import {ResponsePureBets, UserBetsResponse} from "@/models/bets";
 
 export const betsApi = api.injectEndpoints({
     endpoints: (build) => ({
@@ -14,9 +13,21 @@ export const betsApi = api.injectEndpoints({
                 }
             }),
         }),
+        fetchFullUserBets: build.query<UserBetsResponse, [number | undefined, number, number]>({
+            query: ([id, page, rows]) => ({
+                url: '/bets',
+                params: {
+                    "filters[user][id][$eq]": id,
+                    populate: 'match,team',
+                    "pagination[page]": page,
+                    "pagination[pageSize]": rows
+                }
+            })
+        })
     })
 })
 
 export const {
     useFetchBetsByUserQuery,
+    useFetchFullUserBetsQuery
 } = betsApi

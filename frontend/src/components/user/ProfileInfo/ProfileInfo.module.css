@@ -1,37 +1,38 @@
 .profile {
-  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 20px;
-  background-color: white;
 }
 .profile .avatar {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   margin-bottom: 20px;
 }
 .profile .info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  width: 200px;
+  border: 1px solid #ccc;
+  width: 500px;
 }
-.profile .info .username {
-  padding-right: 10px;
-  margin-bottom: 20px;
-  font-size: 32px;
-  border-right: 1px solid black;
+.profile .info .infoItem {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
 }
-.profile .info .email {
-  padding-right: 10px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  border-right: 1px solid black;
+.profile .info .infoItem:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
 }
-.profile .info .dob {
-  padding-right: 10px;
-  margin-bottom: 20px;
+.profile .info .infoItem h3 {
+  width: 100%;
+  padding: 5px 10px;
+}
+.profile .info .infoItem p {
+  width: 100%;
+  padding: 5px 10px;
+  background-color: #cccccc;
+  color: gray;
 }
 
 /*# sourceMappingURL=ProfileInfo.module.css.map */
