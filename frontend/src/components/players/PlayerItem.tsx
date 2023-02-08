@@ -2,7 +2,7 @@ import React from 'react';
 import {IPlayer} from "@/utils/types/teams";
 import styles from './PlayerItem.module.css'
 import {getMin} from "@/utils/time";
-import {Collapse, IconButton, Table, TableBody, TableCell, TableHead, TableRow} from "@mui/material";
+import {Collapse, IconButton, Table, TableBody, TableCell, TableHead, TablePagination, TableRow} from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Box from "@mui/material/Box";

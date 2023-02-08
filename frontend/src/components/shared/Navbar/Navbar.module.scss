@@ -1,41 +1,44 @@
 .header {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
   align-items: center;
   padding: 0 20px;
-  height: 80px;
-  background-color: #11111d;
-
+  height: 70px;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
   img {
-    height: 60px;
+    height: 50px;
     width: auto;
+    margin-right: 30px;
   }
 
   ul {
     display: flex;
     margin: 12px;
-    justify-content: space-between;
     list-style-type: none;
-    width:35%;
     align-items: center;
     font-size: 32px;
-    color: #fff;
+    color: black;
     font-weight: 700;
-    &.first {
-      width: 15%;
+    &:last-child {
+      margin-left: auto;
     }
     li {
       margin-right: 20px;
       font-size: 24px;
       a {
-        color: white;
+        color: gray;
+        text-transform: uppercase;
+        font-weight: 700;
         text-decoration: none;
-        font-variant: small-caps;
         &:hover {
-          opacity: 0.9;
+          color: #ee342c;
         }
         &:active {
           transform: scale(0.95);
+        }
+        &.active {
+          color: #ee342c;
         }
       }
     }

@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
 import {Card} from "@mui/material";
-import {IMatch} from "@/utils/types/match";
 import styles from './MatchCard.module.css'
 import {useRouter} from "next/router";
 import MatchTeam from "@/components/competition/MatchTeam";
+import {ResponseMatch} from "@/models/match";
 
 interface MatchCardProps {
-    match: IMatch
+    match: ResponseMatch
 }
 
 const MatchCard: React.FC<MatchCardProps> = ({match}) => {

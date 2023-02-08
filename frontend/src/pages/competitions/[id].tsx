@@ -10,10 +10,9 @@ import {IMatch} from "@/utils/types/match";
 
 interface CompetitionProps {
     competition: any,
-    matches: IMatch[]
 }
 
-const Competition: NextPage<CompetitionProps> = ({competition, matches}) => {
+const Competition: NextPage<CompetitionProps> = ({competition}) => {
 
     useEffect(() => {
         console.log('comp page render')
@@ -23,7 +22,7 @@ const Competition: NextPage<CompetitionProps> = ({competition, matches}) => {
         <MainLayout>
             <main className='bg-black h-full'>
                 <CompetitionIntro name={competition.name} description={competition.description} />
-                <Matches matches={matches} />
+                <Matches />
             </main>
         </MainLayout>
     );
@@ -32,12 +31,10 @@ const Competition: NextPage<CompetitionProps> = ({competition, matches}) => {
 export const getServerSideProps:GetServerSideProps = async (ctx) => {
     try {
         const id = ctx?.params?.id || 1
-        const matches = await Api(ctx).match.getMatchesByComp(+id)
         const competition = await Api(ctx).competition.getOne(+id)
         return {
             props: {
-                competition,
-                matches
+                competition
             }
         }
     } catch (e: any) {

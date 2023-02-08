@@ -1,18 +1,61 @@
 .sidebar {
-  padding-top: 10px;
-  padding-right: 20px;
-  padding-left: 10px;
+  padding-top: 20px;
+  margin-right: 10px;
   background-color: white;
-  color: white;
-  width: 30%;
+  color: black;
+  width: 35%;
   height: 100%;
   position: sticky;
   top: 0;
+  bottom: 0;
   h2 {
-    text-align: center;
-    color: black;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     margin-bottom: 20px;
+    color: gray;
+  }
+  .competitions {
+    margin: 0 20px 30px 20px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 16px;
+    }
+    a {
+        text-decoration: none;
+        color: #ee342c;
+        font-size: 16px;
+        font-weight: 700;
+        &:hover {
+          opacity: 0.8;
+        }
+    }
+  }
+  .races {
+    position: relative;
+    h2 {
+      padding: 10px 10px 0 10px;
+    }
+    .racesItems {
+      position: relative;
+      background-color: white;
+      margin: 0 20px;
+      border-radius: 5px 0;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    .overlay {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-top-left-radius: 100px;
+      border-top-right-radius: 70px;
+      background-color: #ee342c;
+      z-index: -1;
+    }
   }
 }

@@ -9,7 +9,7 @@ export const betsApi = api.injectEndpoints({
                 params: {
                     'filters[user][id][$eq]': id,
                     sort: 'id:desc',
-                    'pagination[pageSize]': 10
+                    'pagination[pageSize]': 8
                 }
             }),
         }),

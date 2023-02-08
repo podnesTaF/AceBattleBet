@@ -20,6 +20,17 @@ export const matchApi = api.injectEndpoints({
                     populate: '/matches?populate=bets.team,team_one,team_two'
                 }
             }),
+        }),
+        fetchMatchesByCompetition: build.query<ResponseAllMatches, number[]>({
+            query: ([id, page, limit]) => ({
+                url: '/matches',
+                params: {
+                    "filters[competition][id][$eq]": id,
+                    populate: "team_one.players,team_two.players,team_one.coach,team_two.coach",
+                    "pagination[page]": page,
+                    "pagination[pageSize]": limit
+                }
+            })
         })
     })
 })
@@ -27,4 +38,5 @@ export const matchApi = api.injectEndpoints({
 export const {
     useFetchFullMatchQuery,
     useFetchAllMatchesQuery,
+    useFetchMatchesByCompetitionQuery,
 } = matchApi

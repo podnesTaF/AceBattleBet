@@ -13,16 +13,20 @@ interface MainLayoutProps {
 }
 const MainLayout: React.FC<MainLayoutProps> = ({children, rightSideBarHidden, sideBarHidden, variant}) => {
     return (
-        <>
-            <Navbar />
-            <div className='wrapper' >
-                <SideBar isHidden={sideBarHidden} />
-                <div style={{width: '100%'}}>
-                    {children}
-                </div>
-                <RightSideBar isHidden={rightSideBarHidden} />
+        <div className='full'>
+            <div className='right-stripe'>
             </div>
-        </>
+            <div className='main'>
+                <Navbar />
+                <div className='wrapper'>
+                    <SideBar isHidden={sideBarHidden} />
+                    <div style={{width: '100%'}}>
+                        {children}
+                    </div>
+                    <RightSideBar isHidden={rightSideBarHidden} />
+                </div>
+            </div>
+        </div>
     );
 };
 export default MainLayout;

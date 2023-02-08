@@ -14,6 +14,6 @@ export const api = createApi({
             return action.payload[reducerPath]
         }
     },
-    tagTypes: ['Matches', 'Bets'],
+    tagTypes: ['Matches', 'Bets', 'Players'],
     endpoints: () => ({}),
 })
