@@ -1,9 +1,10 @@
 import {api} from './api'
 import {ResponsePureBets} from "@/models/bets";
+import qs from 'qs';
 
 export const betsApi = api.injectEndpoints({
     endpoints: (build) => ({
-        fetchBetsByUser: build.query<ResponsePureBets, number>({
+        fetchBetsByUser: build.query<ResponsePureBets, number | undefined>({
             query: (id: number) => ({
                 url: '/bets',
                 params: {

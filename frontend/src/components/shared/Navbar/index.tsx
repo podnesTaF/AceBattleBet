@@ -12,6 +12,21 @@ import AddCardIcon from '@mui/icons-material/AddCard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddBalance from "@/components/shared/AddBalance";
 
+const Routes = [
+    {
+        name: 'Teams',
+        pathname: '/teams'
+    },
+    {
+        name: 'Players',
+        pathname: '/players'
+    },
+    {
+        name: 'Competitions',
+        pathname: '/competitions'
+    }
+]
+
 const Navbar = () => {
     const router = useRouter()
     const userData = useAppSelector(selectUserData)
@@ -29,30 +44,22 @@ const Navbar = () => {
                 <Image src="/main-logo-abb.svg" alt="main-logo" height={100} width={300}/>
             </Link>
             <ul className={styles.first}>
-                <li>
-                    <Link href={'/teams'}>
-                        Teams
-                    </Link>
-                </li>
-                <li>
-                    <Link href={'/players'}>
-                        Players
-                    </Link>
-                </li>
-                <li>
-                    <Link href={'/competitions'}>
-                        Competitions
-                    </Link>
-                </li>
+                {Routes.map((route, i) => (
+                    <li key={i}>
+                        <Link className={route.pathname === router.pathname ? styles.active : ''} href={route.pathname}>
+                            {route.name}
+                        </Link>
+                    </li>
+                ))}
             </ul>
             {!userData ? (
                 <ul>
                     <li>
-                        <Button onClick={() => router.push('/auth/login')} variant="contained"
-                                color='warning'>Login</Button>
+                        <Button onClick={() => router.push('/auth/login')} variant="outlined"
+                                color='primary'>Login</Button>
                     </li>
                     <li>
-                        <Button onClick={() => router.push('/auth/register')} variant='contained' color='error'>
+                        <Button onClick={() => router.push('/auth/register')} variant='contained' color='primary'>
                             Register
                         </Button>
                     </li>

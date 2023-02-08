@@ -1,9 +1,7 @@
 .info {
   border: rgba(0,0,0,0.3);
+  background-color: white;
   &:nth-child(even) {
-    background-color: white;
-  }
-  &:nth-child(odd) {
     background-color: lightgray;
   }
   td {

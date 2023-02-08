@@ -33,9 +33,9 @@ const MatchIntro: React.FC<MatchIntroProps> = ({teamTwo, teamOne, date}) => {
                 <h1>VS</h1>
             </div>
             <div className={styles.matchIntro__date}>
-                <p>{date.slice(0, 10)}</p>
+                <p>{date.slice(0, 16).replace('T', " ")}</p>
             </div>
-            <div className='overlay'></div>
+            {/*<div className='overlay'></div>*/}
         </section>
     );
 };

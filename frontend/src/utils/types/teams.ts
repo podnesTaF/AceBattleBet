@@ -26,7 +26,7 @@ export type IPlayer = {
         name: string;
         surname: string;
         dateOfBirth: string;
-        isJoker: boolean;
+        isJocker: boolean;
         pbs: IPbs[];
         team: {
             data: ITeam

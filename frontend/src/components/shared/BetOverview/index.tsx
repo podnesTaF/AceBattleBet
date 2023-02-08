@@ -17,7 +17,7 @@ const BetOverview: React.FC<BetOverviewProps> = ({bet}) => {
             </div>
             <div className={styles.betItem}>
                 <h3>Coefficient</h3>
-                <p>x{bet.attributes.coefficient}</p>
+                <p>x{bet.attributes.coefficient?.toFixed(2)}</p>
             </div>
             <div className={styles.betItem}>
                 <h3>Win</h3>

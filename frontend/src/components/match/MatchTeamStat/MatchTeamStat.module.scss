@@ -1,11 +1,11 @@
 .stat {
   padding: 20px;
   border-radius: 10px;
-  background-color: black;
-  text-align: center;
+  background-color: white;
+  border: 1px solid lightgray;
   margin: 30px;
-  color: white;
-  width: 40%;
+  color: black;
+  width: 100%;
   h3 {
     font-size: 1.5rem;
     font-weight: 700;
@@ -28,6 +28,7 @@
       justify-content: space-between;
       background-color: white;
       color: black;
+      border-bottom: 1px solid lightgray;
       padding: 10px;
     }
   }

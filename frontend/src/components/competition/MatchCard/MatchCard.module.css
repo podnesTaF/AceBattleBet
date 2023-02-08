@@ -1,47 +1,58 @@
 .items {
   display: flex;
-  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
-  background-color: black;
+  background-color: white;
   padding: 16px;
-  border-radius: 10px;
+  border-radius: 5px;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   margin-bottom: 20px;
+  position: relative;
 }
 .items .item {
   display: flex;
   flex-direction: column;
-  width: 40%;
-  border-radius: 10px;
+  width: 50%;
+  border-radius: 5px;
   margin: 0 16px;
-}
-.items .item:nth-child(1) {
-  background-color: #ee342c;
-}
-.items .item:last-child {
-  background-color: gold;
+  border: 1px solid black;
 }
 .items .item .itemTitle {
   font-size: 32px;
   font-weight: 700;
-  margin: 12px;
-  color: white;
+  padding: 12px;
+  background-color: lightgray;
+  border-radius: 5px 5px 0 0;
+  color: black;
 }
 .items .item h3 {
-  color: white;
+  color: black;
   font-size: 24px;
   margin: 4px 12px;
   font-weight: 700;
 }
+.items .item p {
+  color: black;
+  font-size: 24px;
+  margin: 4px 12px;
+  font-weight: 400;
+  padding-bottom: 8px;
+  border-bottom: 1px solid lightgray;
+}
 .items .item ul {
-  color: white;
+  color: black;
   list-style: none;
 }
 .items .item ul li {
   font-size: 18px;
   font-weight: 500;
   margin: 12px 20px;
+}
+.items .detailBtn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /*# sourceMappingURL=MatchCard.module.css.map */

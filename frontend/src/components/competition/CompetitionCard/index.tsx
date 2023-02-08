@@ -3,47 +3,43 @@ import {useRouter} from "next/router";
 import styles from './CompetitionCard.module.css'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import Image from 'next/image'
 import Typography from '@mui/material/Typography';
+import {ICompetitionsPageItem} from "@/models/competitions";
 
 
 interface CompetitionCardProps {
-    id: number;
-    name: string;
-    raceCount: number;
-    betsCount: number;
-    teams: number;
+    competition: ICompetitionsPageItem;
 }
 
-const CompetitionCard: React.FC<CompetitionCardProps> = ({id, betsCount, raceCount, teams, name}) => {
+const CompetitionCard: React.FC<CompetitionCardProps> = ({competition}) => {
     const router = useRouter()
 
     return (
-        <Card onClick={() => router.push('/competitions/' + id)} className={styles.card}>
-            <CardMedia
-                sx={{height: 200}}
-                image="/cup-benelux.jpg"
-                title="Cub Benelux"
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Description for competition
-                </Typography>
-            </CardContent>
+        <Card onClick={() => router.push('/competitions/' + competition.id)} className={styles.card}>
+            <Image src={`http://localhost:1337${competition.image.data.attributes.formats.large.url}`}
+                   alt="into image" width={900} height={500} className={styles.media}/>
+            <div className={styles.content}>
+                <div className={styles.location}>
+                    <p>{competition.location}</p>
+                    <p>{competition.date.slice(0, 16).replace('T', ' ')}</p>
+                </div>
+                <div className={styles.title}>
+                    <h2>{competition.name}</h2>
+                    <p>{competition.description}</p>
+                </div>
+            </div>
             <div className={styles.wrapper}>
                 <div className={styles.item}>
-                    <h3>{raceCount}+</h3>
+                    <h3>{competition.matches}+</h3>
                     <p>races</p>
                 </div>
                 <div className={styles.item}>
-                    <h3>{betsCount}+</h3>
+                    <h3>{competition.betsCount}+</h3>
                     <p>bets</p>
                 </div>
                 <div className={styles.item}>
-                    <h3>{teams}+</h3>
+                    <h3>{competition.teams}+</h3>
                     <p>teams</p>
                 </div>
             </div>

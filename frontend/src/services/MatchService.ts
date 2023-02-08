@@ -17,7 +17,7 @@ export const matchApi = api.injectEndpoints({
             query: () => ({
                 url: '/matches',
                 params: {
-                    populate: '/matches?populate=bets.team,team_one,team_two'
+                    populate: 'bets.team,team_one,team_two'
                 }
             }),
         }),
@@ -31,7 +31,7 @@ export const matchApi = api.injectEndpoints({
                     "pagination[pageSize]": limit
                 }
             })
-        })
+        }),
     })
 })
 

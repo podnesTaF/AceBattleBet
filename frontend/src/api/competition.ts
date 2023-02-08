@@ -2,7 +2,7 @@ import {AxiosInstance} from "axios";
 
 export const CompetitionApi = (instance: AxiosInstance) => ({
     async getAll() {
-        const {data: {data}} = await instance.get('/competitions?populate=matches.bets');
+        const {data: {data}} = await instance.get('/competitions?populate=matches.bets,image');
 
         const competitions = data.map((competition: any) => {
 
@@ -25,7 +25,7 @@ export const CompetitionApi = (instance: AxiosInstance) => ({
     },
 
     async getOne(id: number) {
-        const {data: {data}} = await instance.get('/competitions/' + id);
+        const {data: {data}} = await instance.get('/competitions/' + id + "?populate=image");
 
         return {id: data.id, ...data.attributes};
     }

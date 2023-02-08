@@ -1,33 +1,71 @@
 .card {
-  max-width: 85%;
-  margin: 20px auto 0;
+  max-width: 100%;
+  position: relative;
+  margin-bottom: 20px;
 }
-
-.wrapper {
+.card .media {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  background-color: #1a1a2e;
+  margin-bottom: 20px;
+}
+.card .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.card .content .location {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin: 10px;
+}
+.card .content .title {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-align: right;
+  color: white;
+}
+.card .content .title h2 {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.card .content .title p {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.card .wrapper {
   display: flex;
   margin: 32px;
   justify-content: space-around;
 }
-.wrapper .item {
+.card .wrapper .item {
   display: flex;
   padding: 4px;
-  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   justify-content: center;
   align-items: center;
   background-color: white;
   margin-right: 24px;
 }
-.wrapper .item:nth-child(1) {
-  background-color: white;
+.card .wrapper .item:nth-child(1) {
+  border: 2px solid lightgray;
 }
-.wrapper .item:nth-child(2) {
-  background-color: red;
+.card .wrapper .item:nth-child(2) {
+  border: 2px solid black;
 }
-.wrapper .item:nth-child(3) {
-  background-color: gold;
+.card .wrapper .item:nth-child(3) {
+  border: 2px solid red;
 }
-.wrapper .item h3 {
+.card .wrapper .item h3 {
   font-size: 24px;
   font-weight: 700;
   margin: 12px;

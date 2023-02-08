@@ -1,4 +1,4 @@
-import {ITeam} from "@/utils/types/teams";
+import {ICoach, ITeam} from "@/utils/types/teams";
 import {IBet} from "@/utils/types/bet";
 import {Meta} from "@/models/players";
 

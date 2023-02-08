@@ -1,10 +1,8 @@
 .info {
   border: rgba(0, 0, 0, 0.3);
-}
-.info:nth-child(even) {
   background-color: white;
 }
-.info:nth-child(odd) {
+.info:nth-child(even) {
   background-color: lightgray;
 }
 .info td {

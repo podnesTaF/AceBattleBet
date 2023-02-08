@@ -20,7 +20,7 @@ const TeamsPage = () => {
 
     return (
         <MainLayout>
-            <h1>Teams</h1>
+            <h1 className='title'>Teams</h1>
             <TeamsList teams={teams} />
         </MainLayout>
     );

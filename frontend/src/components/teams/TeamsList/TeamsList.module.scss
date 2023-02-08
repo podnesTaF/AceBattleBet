@@ -1,4 +1,10 @@
 .container {
-  max-width: 905px;
-    margin: 0 auto;
+  max-width: 100%;
+  margin: 0 auto;
+  .exp {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  margin-left: 20px;
+  }
 }

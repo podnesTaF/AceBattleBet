@@ -5,7 +5,6 @@ import Matches from "@/components/competition/Matches/index";
 import CompetitionIntro from "@/components/competition/CompetitionIntro";
 import {GetServerSideProps, NextPage} from "next";
 import {Api} from "@/api";
-import {IMatch} from "@/utils/types/match";
 
 
 interface CompetitionProps {
@@ -21,7 +20,7 @@ const Competition: NextPage<CompetitionProps> = ({competition}) => {
     return (
         <MainLayout>
             <main className='bg-black h-full'>
-                <CompetitionIntro name={competition.name} description={competition.description} />
+                <CompetitionIntro image={competition.image.data.attributes.formats.large.url} name={competition.name} description={competition.description} />
                 <Matches />
             </main>
         </MainLayout>

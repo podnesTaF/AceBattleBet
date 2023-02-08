@@ -1,6 +1,12 @@
 .container {
-  max-width: 905px;
+  max-width: 100%;
   margin: 0 auto;
+}
+.container .exp {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
 }
 
 /*# sourceMappingURL=TeamsList.module.css.map */

@@ -10,15 +10,25 @@ interface RightSideBarProps {
 }
 const RightSideBar: React.FC<RightSideBarProps> = ({isHidden}) => {
     const me = useAppSelector(selectUserData)
-    const {data, error, isLoading} = useFetchBetsByUserQuery(me!.id)
+    const {data, error, isLoading} = useFetchBetsByUserQuery(me?.id)
+
+    if(!me) return (
+        <div className={styles.container} style={{display: isHidden ? 'none' : 'block'}}>
+            <div className={`${isHidden && 'hidden'}`}>
+                <h1>Your last Bets</h1>
+                <h2>Enter Your account to see bets</h2>
+            </div>
+        </div>
+    )
+
 
     return (
         <div className={styles.container} style={{display: isHidden ? 'none' : 'block'}}>
             <div className={`${isHidden && 'hidden'}`}>
                 <h1>Your last Bets</h1>
                 {isLoading && <h2>Loading...</h2>}
-                {error && <h2>Enter Your account to see bets</h2>}
-                {data && data.data.length ? <ul className={styles.betWrap}>
+                {error && <h2>Error fetching your bets</h2>}
+                {!error && data?.data.length ? <ul className={styles.betWrap}>
                     {
                         data.data.map(bet => (
                            <BetOverview key={bet.id} bet={bet}/>

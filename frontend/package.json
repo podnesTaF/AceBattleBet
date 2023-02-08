@@ -34,8 +34,10 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/qs": "^6.9.7",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
+    "qs": "^6.11.0",
     "sass": "^1.57.1"
   }
 }

@@ -11,7 +11,10 @@ const MatchTeam: React.FC<MatchTeamProps> = ({match, team}) => {
     return (
         <div className={styles.item}>
             <h2 className={styles.itemTitle}>{match.attributes[team].data.attributes.name}</h2>
-            <h3>Coach: {match.attributes[team].data.attributes.coach.data.attributes.name} {match.attributes[team].data.attributes.coach.data.attributes.surname}</h3>
+            <h3>Coach:</h3>
+            <p>
+                {match.attributes[team].data.attributes.coach.data.attributes.name} {match.attributes[team].data.attributes.coach.data.attributes.surname}
+            </p>
             <h3>Players:</h3>
             <ul>
                 {match.attributes[team].data.attributes.players.data.map((player: any) => (

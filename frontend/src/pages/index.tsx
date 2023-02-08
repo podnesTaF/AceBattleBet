@@ -15,11 +15,8 @@ const content = [{name: 'Explore teams', color: 'white', position: 'left', id: 1
     id: 2
 } as const, {name: 'Make your bet', color: 'black', position: 'left', id: 3} as const]
 
-interface HomeProps {
-    competitions: any
-}
 
-const Home: NextPage<HomeProps> = ({competitions}) => {
+const Home: NextPage = () => {
 
     return (
         <>
@@ -33,13 +30,6 @@ const Home: NextPage<HomeProps> = ({competitions}) => {
                             <IntroCard key={item.id} color={item.color} content={item.name} position={item.position}/>
                         ))}
                     </div>
-                    <h1>Competitions</h1>
-                    {competitions.map((comp: any) => {
-                        return <CompetitionCard
-                            id={comp.id}
-                            key={comp.id}
-                            name={comp.name} raceCount={comp.matches} betsCount={comp.betsCount} teams={comp.teams}/>
-                    })}
                 </main>
             </MainLayout>
         </>
@@ -47,23 +37,4 @@ const Home: NextPage<HomeProps> = ({competitions}) => {
 }
 
 export default Home;
-
-export const getServerSideProps:GetServerSideProps = async (ctx) => {
-    try {
-        const competitions = await Api().competition.getAll()
-
-        return {
-            props: {
-                competitions
-            }
-        }
-    } catch (err) {
-        console.log('index page', err)
-        return {
-            props: {
-
-            }
-        }
-    }
-}
 
