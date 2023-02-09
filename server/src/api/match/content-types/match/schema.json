@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "matches",
+  "info": {
+    "singularName": "match",
+    "pluralName": "matches",
+    "displayName": "Match",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "team_one": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::team.team",
+      "inversedBy": "matches"
+    },
+    "team_two": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::team.team",
+      "inversedBy": "matches"
+    },
+    "bets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bet.bet",
+      "mappedBy": "match"
+    },
+    "competition": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::competition.competition",
+      "inversedBy": "matches"
+    },
+    "time": {
+      "type": "datetime",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

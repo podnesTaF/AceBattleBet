@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "players",
+  "info": {
+    "singularName": "player",
+    "pluralName": "players",
+    "displayName": "Player",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "surname": {
+      "type": "string",
+      "required": true
+    },
+    "dateOfBirth": {
+      "type": "date",
+      "required": true
+    },
+    "team": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::team.team",
+      "inversedBy": "players"
+    },
+    "isJocker": {
+      "type": "boolean",
+      "default": false
+    },
+    "pbs": {
+      "displayName": "pbs",
+      "type": "component",
+      "repeatable": true,
+      "component": "pbs.pbs"
+    },
+    "nationality": {
+      "type": "string",
+      "required": true
+    },
+    "age_group": {
+      "type": "enumeration",
+      "enum": [
+        "U18",
+        "U20",
+        "U23",
+        "SENIOR"
+      ]
+    }
+  }
+}

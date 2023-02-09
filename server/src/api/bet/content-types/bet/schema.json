@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bets",
+  "info": {
+    "singularName": "bet",
+    "pluralName": "bets",
+    "displayName": "Bet",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sum": {
+      "type": "decimal",
+      "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "bets"
+    },
+    "match": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::match.match",
+      "inversedBy": "bets"
+    },
+    "team": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::team.team",
+      "inversedBy": "bets"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "difference",
+        "time",
+        "win"
+      ],
+      "required": true
+    },
+    "possibleWin": {
+      "type": "decimal",
+      "required": false
+    },
+    "coefficient": {
+      "type": "decimal"
+    },
+    "differenceType": {
+      "type": "enumeration",
+      "enum": [
+        "less5",
+        "less10",
+        "less20",
+        "less30",
+        "more30"
+      ]
+    },
+    "agree": {
+      "type": "boolean"
+    }
+  }
+}

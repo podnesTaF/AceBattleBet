@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_pbs_pbs",
+  "info": {
+    "displayName": "pbs"
+  },
+  "options": {},
+  "attributes": {
+    "distance": {
+      "type": "integer"
+    },
+    "time": {
+      "type": "decimal"
+    }
+  }
+}
