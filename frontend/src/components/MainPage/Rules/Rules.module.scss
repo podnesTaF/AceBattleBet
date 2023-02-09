@@ -1,0 +1,29 @@
+.rules {
+  margin: 0 10px 10px 10px;
+  h1 {
+    padding: 10px;
+    text-transform: uppercase;
+    background-color: #ee342c;
+    color: white;
+  }
+  .wrapper {
+    .rules__content {
+      background: url('/Frame.svg') no-repeat top center;
+      background-size: contain;
+      height: 600px;
+      padding: 60px;
+      color: black;
+      font-size: 16px;
+      line-height: 1.5;
+      .text {
+        max-width: 70%;
+      }
+      h3 {
+        text-transform: uppercase;
+      }
+      p {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

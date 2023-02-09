@@ -5,6 +5,9 @@ import IntroCard from "@/components/MainPage/IntroCard";
 import CompetitionCard from "@/components/competition/CompetitionCard/index";
 import {Api} from "@/api";
 import {GetServerSideProps, NextPage} from "next";
+import React from "react";
+import Rules from "@/components/MainPage/Rules";
+import About from "@/components/MainPage/About";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -30,6 +33,8 @@ const Home: NextPage = () => {
                             <IntroCard key={item.id} color={item.color} content={item.name} position={item.position}/>
                         ))}
                     </div>
+                    <About />
+                    <Rules />
                 </main>
             </MainLayout>
         </>

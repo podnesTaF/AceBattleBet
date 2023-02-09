@@ -25,6 +25,7 @@
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 16px;
+  cursor: pointer;
 }
 .sidebar .competitions a {
   text-decoration: none;
@@ -43,7 +44,6 @@
 }
 .sidebar .races .racesItems {
   position: relative;
-  height: 100%;
   background-color: white;
   margin: 0 20px;
   border-radius: 5px 0;

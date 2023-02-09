@@ -1,0 +1,41 @@
+.wrapper {
+  margin: 0 10px;
+}
+.wrapper .content {
+  display: flex;
+  width: 100%;
+}
+.wrapper .content .intro {
+  width: 60%;
+  background-color: black;
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+  padding: 60px 30px;
+}
+.wrapper .content .intro .titles {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.wrapper .content .intro .titles h2 {
+  font-size: 42px;
+  color: white;
+  text-transform: uppercase;
+}
+.wrapper .content .text {
+  background-color: #ee342c;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.wrapper .content .text h3 {
+  color: white;
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
+/*# sourceMappingURL=About.module.css.map */

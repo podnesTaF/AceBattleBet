@@ -1,5 +1,6 @@
 import {IUser} from "@/utils/types/user";
 import {ITeam} from "@/utils/types/teams";
+import {differenceTypes} from "@/store/slices/differenceSlice";
 
 export type IBet = {
     id: number;
@@ -8,17 +9,16 @@ export type IBet = {
     matchId: number;
     team: ITeam;
     type: BetType;
-    differenceRate?: number;
     playerId?: number;
     coefficient?: number;
     possibleWin?: number;
+    differenceType?: differenceTypes;
+    agree?: boolean;
 }
 
 export enum BetType {
     win = 'win',
     difference = 'difference',
-    joker = 'joker',
-    fastest = 'fastest',
 
 }
 

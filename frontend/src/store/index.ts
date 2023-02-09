@@ -2,10 +2,7 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
-import {userReducer} from "@/store/slices";
-import {betsReducer} from "@/store/slices/betSlice";
-import {matchApi} from "@/services/MatchService";
-import {betsApi} from "@/services/BetsService";
+import {userReducer, betsReducer, differenceReducer} from "@/store/slices";
 import {api} from "@/services/api";
 
 export function makeStore() {
@@ -13,6 +10,7 @@ export function makeStore() {
         reducer: {
             user: userReducer,
             bets: betsReducer,
+            difference: differenceReducer,
             [api.reducerPath]: api.reducer,
         },
         middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware)

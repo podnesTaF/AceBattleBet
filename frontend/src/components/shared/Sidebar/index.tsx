@@ -3,18 +3,17 @@ import RaceCard from "@/components/bets/RaceCard/index";
 import styles from './Sidebar.module.css'
 import {useMatches} from "@/hooks/useMatches";
 import Link from "next/link";
+import {useCompetitions} from "@/hooks/useCompetitions";
+import {useRouter} from "next/router";
 
 interface SideBarProps {
     isHidden?: boolean;
 }
 
-const competitions = [
-    "Ace Battle Benelux",
-    "Ace Battle Mile International",
-]
-
 const SideBar: React.FC<SideBarProps> = ({isHidden}) => {
+    const router = useRouter()
     const {matches, setMatches} = useMatches()
+    const {competitions, setCompetitions} = useCompetitions()
 
     return (
         <div className={styles.sidebar} style={{display: isHidden ? 'none' : 'block'}}>
@@ -22,9 +21,9 @@ const SideBar: React.FC<SideBarProps> = ({isHidden}) => {
                 <h2>
                     Top Competitions
                 </h2>
-                {competitions.map((competition, index) => (
-                 <h3 key={index}>
-                        {competition}
+                {competitions && competitions.map((competition, index) => (
+                 <h3 onClick={() => router.push('competitions/' + competition.id)} key={index}>
+                        {competition.attributes.name}
                  </h3>
                 ))}
                 <Link href={'/competitions'}>

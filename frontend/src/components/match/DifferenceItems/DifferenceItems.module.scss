@@ -1,0 +1,23 @@
+.diff {
+  width: 100%;
+  border: 1px solid #ccc;
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  h3 {
+    font-size: 1.5rem;
+    color: black;
+  }
+  th {
+    font-size: 20px;
+    text-align: center;
+  }
+  td {
+    text-align: center;
+  }
+  tbody {
+    tr:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+  }
+}

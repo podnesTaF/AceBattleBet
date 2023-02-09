@@ -15,6 +15,6 @@ export const theme = createTheme({
         },
         warning: {
             main: '#ffc200'
-        }
+        },
     },
 });

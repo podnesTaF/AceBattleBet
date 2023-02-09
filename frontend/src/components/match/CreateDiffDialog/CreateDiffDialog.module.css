@@ -1,0 +1,23 @@
+.wrapper {
+  padding: 20px;
+}
+.wrapper .title {
+  font-size: 28px;
+  text-align: center;
+}
+.wrapper .item {
+  margin: 20px auto;
+  width: 100%;
+}
+.wrapper .item select {
+  width: 200px;
+}
+
+.alert {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/*# sourceMappingURL=CreateDiffDialog.module.css.map */

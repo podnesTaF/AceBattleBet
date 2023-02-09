@@ -13,12 +13,17 @@
 }
 .wrapper .item h2 {
   font-size: 2rem;
-  color: white;
+  color: black;
+  margin-bottom: 20px;
+}
+.wrapper .item .differenceTitle {
+  margin: 20px 0;
 }
 .wrapper .item .bets_stat {
   display: flex;
   align-items: center;
   width: 400px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=BetsWrapper.module.css.map */

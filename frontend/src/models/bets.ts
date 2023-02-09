@@ -3,6 +3,7 @@ import {ITeam} from "@/utils/types/teams";
 import {BetType} from "@/utils/types/bet";
 import {IMatch, ResponseMatch} from "@/models/match";
 import {Meta} from "@/models/players";
+import {differenceTypes} from "@/store/slices/differenceSlice";
 
 export type ResponsePureBets = {
     data: IPureBet[]
@@ -38,6 +39,8 @@ export type IUserBet = {
         }
         coefficient: number;
         possibleWin?: number;
+        differenceType?: differenceTypes;
+        agreement?: boolean;
     }
 }
 
@@ -48,8 +51,20 @@ export type IBet = {
     matchId: number;
     team: ITeam;
     type: BetType;
-    differenceRate?: number;
-    playerId?: number;
     coefficient?: number;
     possibleWin?: number;
+    agree?: boolean
+    differenceType?: differenceTypes;
+}
+
+export type createDiffBetDto = {
+    sum: number;
+    type: BetType.difference;
+    match: number;
+    user: number;
+    team: number;
+    differenceType: differenceTypes;
+    agreement: boolean;
+    coefficient: number;
+    possibleWin: number;
 }

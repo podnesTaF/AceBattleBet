@@ -30,7 +30,7 @@ const ProfilePage: NextPage<ProfilePageProps> = ({bets}) => {
                       <ProfileInfo user={userData}/>
                       <UserStat bets={bets} />
                       <Button className='profile__balance' variant={"outlined"} color={'primary'}>
-                          {userData.balance} $
+                          {userData.balance || 0} $
                       </Button>
                   </div>
                   <BetTable setPage={setPage} page={page} rowsPerPage={rowsPerPage} bets={data.data} total={data.meta.pagination.total} />

@@ -16,3 +16,12 @@ export type ICompetitionsPageItem = {
     name: string;
     description: string;
 }
+
+export type ResponseCompNames = {
+    data: {
+        id: number,
+        attributes: {
+            name: string
+        }
+    }[]
+}

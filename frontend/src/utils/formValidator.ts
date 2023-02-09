@@ -28,21 +28,15 @@ export const RegisterSchema = yup
     })
 
 export const betSchema = (balance:number) => ({
-    CreateBetSchema: yup.object().shape({
+    CreateWinBetSchema: yup.object().shape({
         sum: yup.number().min(0).max(balance, 'Entered sum is more than you have').required('Please, provide the sum'),
         team: yup.number().required('Please provide team')
+    }),
+    createDiffBetSchema: yup.object().shape({
+        sum: yup.number().min(0).max(balance, 'Entered sum is more than you have').required('Please, provide the sum'),
     })
 })
 
 export const addBalanceSchema = yup.object().shape({
     sum: yup.number().min(0).required('Please, provide the sum')
 })
-
-
-// export const ChangeUserDataSchema = yup.object().shape({
-//     fullName: yup.string().required('Please provide name'),
-//     oldPassword: yup.string().required('Please provide old password'),
-//     password: yup.string()
-//         .min(6, 'Password at least 6 characters')
-//         .required('Please provide new password')
-// })

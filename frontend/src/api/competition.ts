@@ -1,4 +1,5 @@
 import {AxiosInstance} from "axios";
+import {ResponseCompNames} from "@/models/competitions";
 
 export const CompetitionApi = (instance: AxiosInstance) => ({
     async getAll() {
@@ -28,5 +29,9 @@ export const CompetitionApi = (instance: AxiosInstance) => ({
         const {data: {data}} = await instance.get('/competitions/' + id + "?populate=image");
 
         return {id: data.id, ...data.attributes};
+    },
+    async getCompNames() {
+        const {data: {data}} = await instance.get<ResponseCompNames>('/competitions?fields=name');
+        return data
     }
 })

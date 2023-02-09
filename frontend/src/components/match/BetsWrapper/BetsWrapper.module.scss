@@ -11,12 +11,17 @@
     width: 100%;
     h2 {
       font-size: 2rem;
-      color: white;
+      color: black;
+      margin-bottom: 20px;
+    }
+    .differenceTitle {
+      margin: 20px 0;
     }
     .bets_stat {
       display: flex;
       align-items: center;
       width: 400px;
+      cursor: pointer;
     }
   }
 }

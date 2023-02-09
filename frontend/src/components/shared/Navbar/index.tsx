@@ -41,7 +41,7 @@ const Navbar = () => {
     return (
         <header className={styles.header}>
             <Link href={'/'}>
-                <Image src="/main-logo-abb.svg" alt="main-logo" height={100} width={300}/>
+                <Image src="/main-logo-abb.png" alt="main-logo" height={100} width={300}/>
             </Link>
             <ul className={styles.first}>
                 {Routes.map((route, i) => (
@@ -68,7 +68,7 @@ const Navbar = () => {
                 <>
                     <ul>
                         <li className={styles.balance}>
-                            <h4>{userData.balance} $</h4>
+                            <h4>{userData.balance || 0} $</h4>
                         </li>
                         <li>
                             <Button onClick={() => setOpen(true)} variant='outlined'

@@ -1,7 +1,6 @@
 import React from 'react';
 import {ITeam} from "@/utils/types/teams";
 import styles from './MatchTeamStat.module.css'
-import {getMin} from "@/utils/time";
 import {getMilePb} from "@/utils/distance";
 
 interface MatchTeamStatProps {

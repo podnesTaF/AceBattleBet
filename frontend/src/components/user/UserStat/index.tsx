@@ -20,7 +20,7 @@ const UserStat: React.FC<UserStatProps> = ({bets}) => {
                 </div>
                 <div className={styles.item}>
                     <h4>Wins:</h4>
-                    <h3>10</h3>
+                    <h3>{bets.length / 2}</h3>
                 </div>
                 <div className={styles.item}>
                     <h4>Bets:</h4>

@@ -16,6 +16,12 @@ export const getWinCofs = (teamOne_sum: number, teamTwo_sum: number) => {
     const smallerSumCoof = +((biggerSum + smallerSum) / smallerSum).toFixed(2)
 
     if(teamOne_sum > teamTwo_sum) {
+        if(biggerSumCoof === 1) {
+            return [
+                1.2,
+                12.50
+            ]
+        }
         return [
             biggerSumCoof,
             smallerSumCoof
@@ -26,6 +32,12 @@ export const getWinCofs = (teamOne_sum: number, teamTwo_sum: number) => {
             2
         ]
     } else {
+        if(biggerSumCoof === 1) {
+            return [
+                1.05,
+                12.50
+            ]
+        }
         return [
             smallerSumCoof,
             biggerSumCoof
@@ -38,11 +50,23 @@ export const useBetsPercentage = (betsSumAmount: any) => {
     const biggerPercentage = ((coofs[0] / (coofs[0] + coofs[1])) * 100)
     const smallerPercentage = 100 - biggerPercentage
     if (betsSumAmount[0] > betsSumAmount[1]) {
+        if(smallerPercentage < 10) {
+            return [
+                80,
+                20
+            ]
+        }
         return [
             biggerPercentage,
             smallerPercentage
         ]
     } else {
+        if(smallerPercentage < 10) {
+            return [
+                80,
+                20
+            ]
+        }
         return [
             smallerPercentage,
             biggerPercentage

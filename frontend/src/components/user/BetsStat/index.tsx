@@ -18,7 +18,7 @@ const BetsStat: React.FC<BetsStatProps> = ({bets}) => {
     return (
         <div className={styles.bets}>
             <h3>Total bets sum: {betsSum}</h3>
-            <h3>Balance: {userData?.balance}</h3>
+            <h3>Balance: {userData?.balance || 0}</h3>
         </div>
     );
 };

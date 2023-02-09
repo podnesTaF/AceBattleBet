@@ -5,11 +5,12 @@ import {IBet} from "@/utils/types/bet";
 import {IMatch} from "@/utils/types/match";
 import {getSumAmount, getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
 import CreateBetDialog from "@/components/match/CreateBetDialog";
-import {useDispatch} from "react-redux";
 import {useAppDispatch, useAppSelector} from "@/hooks/useAppHooks";
 import {selectTeams, setCoefficients, setSum, setTeamIds, setWidth} from "@/store/slices/betSlice";
 import {ResponseFullMatch} from "@/models/match";
 import {getIMatch} from "@/utils/match";
+import DifferenceItems from "@/components/match/DifferenceItems";
+import {selectUserData} from "@/store/slices/userSlice";
 interface BetsWrapperProps {
     data: ResponseFullMatch;
     bets: IBet[];
@@ -17,9 +18,11 @@ interface BetsWrapperProps {
 
 const BetsWrapper: React.FC<BetsWrapperProps> = ({data, bets}) => {
     const dispatch = useAppDispatch();
+    const userData = useAppSelector(selectUserData)
     const teams = useAppSelector(selectTeams)
     const [open, setOpen] = useState(false)
     const [match, setMatch] = useState<IMatch>(getIMatch(data));
+    const [diffBets, setDiffBets] = useState<IBet[]>(bets.filter(bet => bet.type === 'difference'));
 
     useEffect(() => {
        setMatch(getIMatch(data));
@@ -42,8 +45,11 @@ const BetsWrapper: React.FC<BetsWrapperProps> = ({data, bets}) => {
                     <BetsItem betCoof={teams[0].coefficient} betSum={teams[0].sum} width={teams[0].width} color={'red'}/>
                     <BetsItem betCoof={teams[1].coefficient} betSum={teams[1].sum} width={teams[1].width} color={'gold'} />
                 </div>
+                <h2 className={styles.differenceTitle}>Difference</h2>
+                <DifferenceItems teams={[match.team_one.attributes.name, match.team_two.attributes.name]} matchId={match.id} team={0} bets={diffBets.filter(bet => bet.team.id === match.team_one.id)} id={match.team_one.id} />
+                <DifferenceItems teams={[match.team_one.attributes.name, match.team_two.attributes.name]} matchId={match.id} team={1} id={match.team_two.id} bets={diffBets.filter(bet => bet.team.id === match.team_two.id)} />
             </div>
-            <CreateBetDialog matchId={match.id} open={open} setOpen={setOpen} teamOne={match.team_one} teamTwo={match.team_two} />
+            {userData && <CreateBetDialog matchId={match.id} open={open} setOpen={setOpen} teamOne={match.team_one} teamTwo={match.team_two} />}
         </div>
     );
 };

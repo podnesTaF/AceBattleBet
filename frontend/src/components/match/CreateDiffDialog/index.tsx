@@ -1,84 +1,73 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
-import {TransitionProps} from '@mui/material/transitions';
-import {FormField} from "@/components/form/FormField";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import {ITeam} from "@/utils/types/teams";
+import React, {useEffect, useState} from 'react';
 import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
+import {BetType} from "@/utils/types/bet";
 import {betSchema} from "@/utils/formValidator";
-import OptionField from "@/components/form/OptionField";
-import {Api} from "@/api";
 import {useAppDispatch, useAppSelector} from "@/hooks/useAppHooks";
 import {changeBalance, selectUserData} from "@/store/slices/userSlice";
-import {BetType} from "@/utils/types/bet";
-
-import styles from './CreateBetDialog.module.css'
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import styles from "./CreateDiffDialog.module.css";
+import {FormField} from "@/components/form/FormField";
+import Button from "@mui/material/Button";
 import {Alert, AlertTitle} from "@mui/material";
-import {useEffect, useState} from "react";
-import {addBet, selectTeams} from "@/store/slices/betSlice";
+import DialogTitle from "@mui/material/DialogTitle";
+import {Transition} from "@/components/match/CreateBetDialog";
+import Dialog from "@mui/material/Dialog";
+import {differenceTypes, selectDiffTeams} from "@/store/slices/differenceSlice";
+import {Api} from "@/api";
+import {addBet} from "@/store/slices/differenceSlice";
+import {findCoef} from "@/utils/diffAlgoth";
 import {getPossibleWin} from "@/utils/betsAlgoth";
 
-export const Transition = React.forwardRef(function Transition(
-    props: TransitionProps & {
-        children: React.ReactElement<any, any>;
-    },
-    ref: React.Ref<unknown>,
-) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
-
-interface CreateBetDialogProps {
-    teamOne: ITeam;
-    teamTwo: ITeam;
-    open: boolean;
+interface createDiffDialogProps {
     setOpen: Function;
-    matchId: number
+    open: boolean;
+    matchId: number,
+    diffTeamId: number;
+    diffType: differenceTypes;
+    agree: boolean;
 }
 
-const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open, setOpen, matchId}) => {
-    const [isVisible, setIsVisible] = useState(false);
+const CreateDiffDialog: React.FC<createDiffDialogProps> = ({setOpen, open, diffTeamId, diffType, matchId, agree}) => {
     const [sum, setSum] = useState(0);
-    const [teamId, setTeamId] = useState(0);
-
+    const [isVisible, setIsVisible] = useState(false);
     const [possibleWin, setPossibleWin] = useState(0);
+    const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        setPossibleWin(getPossibleWin(teams, sum, +teamId))
-    }, [sum, teamId])
-
-
-    const teams = useAppSelector(selectTeams);
+    const differenceTeams = useAppSelector(selectDiffTeams);
 
     const userData = useAppSelector(selectUserData);
-    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        setPossibleWin(sum*findCoef(differenceTeams, diffTeamId, diffType, agree))
+    }, [sum])
 
     const form = useForm({
         mode: 'onChange',
-        resolver: yupResolver(betSchema(userData!.balance).CreateWinBetSchema),
+        resolver: yupResolver(betSchema(userData!.balance).createDiffBetSchema),
     });
 
+
     const onSubmit = async (dto: any) => {
+        const coef = findCoef(differenceTeams, diffTeamId, diffType, agree)
         const data = {
-            sum: dto.sum,
+            sum: +dto.sum,
             match: +matchId,
-            team: +dto.team,
+            team: diffTeamId,
             user: userData!.id,
-            type: BetType.win,
-            coefficient: teams.find((team: any) => team.id === +dto.team)?.coefficient,
-            possibleWin,
+            type: BetType.difference,
+            coefficient: coef,
+            possibleWin: coef * +dto.sum,
+            differenceType: diffType,
+            agree
         }
+
         try {
             const bet = await Api().bets.create(data)
             const updatedUserData = await Api().user.updateMyBalance(userData!.id, userData!.balance - data.sum)
             dispatch(changeBalance(updatedUserData.balance))
-            console.log([+dto.team, dto.sum])
-            dispatch(addBet([+dto.team, dto.sum]))
-            console.log(teams)
+            dispatch(addBet({teamId: diffTeamId, type: diffType, agree, sum: +data.sum}))
         } catch (e) {
             console.log(e)
         }
@@ -89,9 +78,7 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
         setTimeout(() => {
             setIsVisible(false)
         }, 2000)
-
-        // clearTimeout(timer)
-    }
+    };
 
     const handleClose = () => {
         setOpen(false);
@@ -120,9 +107,6 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
                                 <FormField setSum={setSum} name={'sum'} label={'Bet Sum'} type={'number'}/>
                             </Grid>
                             <Grid className={styles.item} item xs={12}>
-                                <OptionField setTeamId={setTeamId} name={'team'} label={'Select Team'} options={[teamOne, teamTwo]} />
-                            </Grid>
-                            <Grid className={styles.item} item xs={12}>
                                 <h3>Possible win: {possibleWin}</h3>
                             </Grid>
                             <Button
@@ -141,7 +125,6 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
             </Dialog>
         </>
     );
-}
+};
 
-
-export default CreateBetDialog
+export default CreateDiffDialog;
