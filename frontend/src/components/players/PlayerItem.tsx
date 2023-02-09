@@ -18,7 +18,7 @@ const PlayerItem: React.FC<PlayerItemProps> = ({player}) => {
     return (
         <>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }} className={styles.info} onClick={() => setOpen(!open)}>
-                <TableCell>{player.id - 6}</TableCell>
+                <TableCell>{player.id}</TableCell>
                 <TableCell>{player.attributes.name}</TableCell>
                 <TableCell>{player.attributes.surname}</TableCell>
                 <TableCell>{player.attributes.team.data.attributes.name}</TableCell>

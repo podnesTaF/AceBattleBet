@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from './RaceCard.module.css';
 import {IBet} from "@/utils/types/bet";
-import {getSumAmount, getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
+import {getSumAmount, getWinCofs, getBetsPercentage} from "@/utils/betsAlgoth";
 import {useRouter} from "next/router";
 
 interface RaceCardProps {
@@ -19,7 +19,7 @@ const RaceCard: React.FC<RaceCardProps> = ({matchId, date, team_one, team_two, b
 
     const [winCofs, setWinCofs] = useState(getWinCofs(sumAmount[0], sumAmount[1]))
 
-    const percentages = useBetsPercentage(sumAmount)
+    const percentages = getBetsPercentage(sumAmount)
 
     const router = useRouter()
 

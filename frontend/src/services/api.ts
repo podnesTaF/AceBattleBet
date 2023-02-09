@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
 import {HYDRATE} from "next-redux-wrapper";
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'http://localhost:1337/api'
+    baseUrl: 'https://abb-server-production.up.railway.app/api'
 })
 
 const baseQueryWithRetry = retry(baseQuery, { maxRetries: 6 })

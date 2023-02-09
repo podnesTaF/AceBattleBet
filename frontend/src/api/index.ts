@@ -27,7 +27,7 @@ export const Api = (
     const headers = token ? {Authorization: 'Bearer ' + token} : {}
 
     const instance = axios.create({
-        baseURL: 'http://localhost:1337/api',
+        baseURL: 'https://abb-server-production.up.railway.app/api',
         headers,
     });
 

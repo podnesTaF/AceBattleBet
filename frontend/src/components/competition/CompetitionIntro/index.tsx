@@ -9,7 +9,7 @@ interface CompetitionIntroProps {
 
 const CompetitionIntro: React.FC<CompetitionIntroProps> = ({description,name, image}) => {
     return (
-        <div className={styles.competitionPreview} style={{backgroundImage: `url(http://localhost:1337${image})`}}>
+        <div className={styles.competitionPreview} style={{backgroundImage: `url(https://abb-server-production.up.railway.app${image})`}}>
             <div className={styles.item}>
                 <h1>{name}</h1>
                 <p>{description}</p>

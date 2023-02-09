@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from '../';
 import {HYDRATE} from 'next-redux-wrapper';
-import {getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
+import {getWinCofs, getBetsPercentage} from "@/utils/betsAlgoth";
 import {differenceTypes} from "@/store/slices/differenceSlice";
 
 interface MatchBetsState {
@@ -63,7 +63,7 @@ export const betsSlice = createSlice({
             const coefs = getWinCofs(state.team_one.sum, state.team_two.sum)
             state.team_one.coefficient = coefs[0];
             state.team_two.coefficient = coefs[1];
-            const width = useBetsPercentage([state.team_one.sum, state.team_two.sum])
+            const width = getBetsPercentage([state.team_one.sum, state.team_two.sum])
             state.team_one.width = width[0];
             state.team_two.width = width[1];
         }

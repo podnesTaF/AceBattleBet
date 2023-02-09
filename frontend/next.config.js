@@ -14,6 +14,12 @@ const nextConfig = {
         port: '1337',
         pathname: '/uploads/**',
       },
+      {
+        protocol: "https",
+        hostname: "abb-server-production.up.railway.app",
+        // port: "7490",
+        pathname: '/uploads/**',
+      }
     ],
   },
 }

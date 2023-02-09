@@ -3,7 +3,7 @@ import styles from './BetsWrapper.module.css'
 import BetsItem from "@/components/match/BetsItem";
 import {IBet} from "@/utils/types/bet";
 import {IMatch} from "@/utils/types/match";
-import {getSumAmount, getWinCofs, useBetsPercentage} from "@/utils/betsAlgoth";
+import {getSumAmount, getWinCofs, getBetsPercentage} from "@/utils/betsAlgoth";
 import CreateBetDialog from "@/components/match/CreateBetDialog";
 import {useAppDispatch, useAppSelector} from "@/hooks/useAppHooks";
 import {selectTeams, setCoefficients, setSum, setTeamIds, setWidth} from "@/store/slices/betSlice";
@@ -33,7 +33,7 @@ const BetsWrapper: React.FC<BetsWrapperProps> = ({data, bets}) => {
         dispatch(setTeamIds([match.team_one.id, match.team_two.id]))
         dispatch(setSum([getSumAmount(match.team_one.id, bets), getSumAmount(match.team_two.id, bets)]))
         dispatch(setCoefficients(getWinCofs(teams[0].sum, teams[1].sum)))
-        dispatch(setWidth(useBetsPercentage([teams[0].sum, teams[1].sum])))
+        dispatch(setWidth(getBetsPercentage([teams[0].sum, teams[1].sum])))
     }, [match]);
 
 

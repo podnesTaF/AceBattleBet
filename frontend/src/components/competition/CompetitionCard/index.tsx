@@ -17,7 +17,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competition}) => {
 
     return (
         <Card onClick={() => router.push('/competitions/' + competition.id)} className={styles.card}>
-            <Image src={`http://localhost:1337${competition.image.data.attributes.formats.large.url}`}
+            <Image src={`https://abb-server-production.up.railway.app${competition.image.data.attributes.formats.large.url}`}
                    alt="into image" width={900} height={500} className={styles.media}/>
             <div className={styles.content}>
                 <div className={styles.location}>
