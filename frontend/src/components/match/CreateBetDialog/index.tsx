@@ -49,6 +49,7 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
 
     useEffect(() => {
         setPossibleWin(getPossibleWin(teams, sum, +teamId))
+        // eslint-disable-next-line
     }, [sum, teamId])
 
 

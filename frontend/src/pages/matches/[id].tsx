@@ -18,8 +18,7 @@ interface MatchPageProps {
 
 const MatchPage: NextPage<MatchPageProps> = ({bets}) => {
     const router = useRouter();
-    const {id} = router.query;
-    if(!id) return null;
+    const id = router.query.id || 1;
     const {data: data, error, isLoading} = matchApi.useFetchFullMatchQuery(+id);
 
     const [match, setMatch] = useState<IMatch>();

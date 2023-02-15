@@ -13,8 +13,7 @@ const Matches: React.FC = () => {
     const router = useRouter()
     const [page, setPage] = React.useState<number>(1);
     const [rowsPerPage, setRowsPerPage] = React.useState<number>(2);
-    const id = router?.query?.id
-    if(!id) return <p>Null</p>
+    const id = router?.query?.id || 1
     const {data, error, isLoading} = useFetchMatchesByCompetitionQuery([+id, page, rowsPerPage])
 
     return (

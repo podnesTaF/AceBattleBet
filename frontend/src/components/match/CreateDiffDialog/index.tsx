@@ -41,6 +41,7 @@ const CreateDiffDialog: React.FC<createDiffDialogProps> = ({setOpen, open, diffT
 
     useEffect(() => {
         setPossibleWin(sum*findCoef(differenceTeams, diffTeamId, diffType, agree))
+        // eslint-disable-next-line
     }, [sum])
 
     const form = useForm({

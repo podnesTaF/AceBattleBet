@@ -26,6 +26,7 @@ const BetsWrapper: React.FC<BetsWrapperProps> = ({data, bets}) => {
 
     useEffect(() => {
        setMatch(getIMatch(data));
+        // eslint-disable-next-line
     }, []);
 
 

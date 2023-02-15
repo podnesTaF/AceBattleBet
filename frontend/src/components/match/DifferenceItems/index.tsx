@@ -47,6 +47,7 @@ const DifferenceItems: React.FC<DifferenceItemsProps> = ({bets, id, team, matchI
         } else if(team === 1) {
             dispatch(setTeamTwoDifferences(structuredBets));
         }
+        // eslint-disable-next-line
     }, []);
 
     return (

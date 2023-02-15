@@ -21,6 +21,8 @@ const RightSideBar: React.FC<RightSideBarProps> = ({isHidden}) => {
         setIsOpen(window.innerWidth > 1200)
         setIsMobile(window.innerWidth < 1200)
         console.log(isOpen)
+
+        // eslint-disable-next-line
     }, [])
 
     if (!me) return (

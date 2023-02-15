@@ -40,7 +40,7 @@ const PlayerItem: React.FC<PlayerItemProps> = ({player}) => {
                         <Box sx={{ margin: 1 }}>
                             <div className={styles.headerWrap}>
                                 <Typography variant="h6" gutterBottom component="div">
-                                    Player's Personal Bests:
+                                    Player&apos;s Personal Bests:
                                 </Typography>
                                 <Typography variant="h6" gutterBottom component="div">
                                     Category: {player.attributes.age_group}
