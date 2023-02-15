@@ -44,4 +44,12 @@
   color: #ee342c;
 }
 
+@media screen and (max-width: 660px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding-top: 16px;
+  }
+}
+
 /*# sourceMappingURL=Navbar.module.css.map */

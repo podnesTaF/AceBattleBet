@@ -35,3 +35,13 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .profile {
+    max-width: 400px;
+    width: 100%;
+    .info {
+      width: 100%;
+    }
+  }
+}

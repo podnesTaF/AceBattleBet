@@ -28,3 +28,10 @@
     }
   }
 }
+
+@media screen and (max-width: 450px) {
+  .stats {
+    max-width: 300px;
+    width: 90%;
+  }
+}

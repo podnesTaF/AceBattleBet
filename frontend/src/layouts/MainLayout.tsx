@@ -25,7 +25,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({children, rightSideBarHidden, si
             </div>
             <div className='main'>
                 <Navbar />
-                <div className='wrapper'>
+                <div className='wrapper' style={{paddingRight: rightSideBarHidden ? 0 : 40}}>
                     {!isMobile && <SideBar isHidden={sideBarHidden}/>}
                     <div style={{width: '100%'}}>
                         {children}

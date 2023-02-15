@@ -33,4 +33,10 @@
   color: #ee342c;
 }
 
+@media screen and (max-width: 660px) {
+  .downNavbar li a {
+    font-size: 20px;
+  }
+}
+
 /*# sourceMappingURL=MobileNavbar.module.css.map */

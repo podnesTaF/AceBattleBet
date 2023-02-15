@@ -29,4 +29,11 @@
   font-size: 18px;
 }
 
+@media screen and (max-width: 450px) {
+  .stats {
+    max-width: 300px;
+    width: 90%;
+  }
+}
+
 /*# sourceMappingURL=UserStat.module.css.map */

@@ -15,8 +15,11 @@ const RightSideBar: React.FC<RightSideBarProps> = ({isHidden}) => {
     const {data, error, isLoading} = useFetchBetsByUserQuery(me?.id)
     const [isOpen, setIsOpen] = React.useState<boolean>();
 
+    const[isMobile, setIsMobile] = React.useState<boolean>()
+
     useEffect(() => {
         setIsOpen(window.innerWidth > 1200)
+        setIsMobile(window.innerWidth < 1200)
         console.log(isOpen)
     }, [])
 
@@ -48,10 +51,11 @@ const RightSideBar: React.FC<RightSideBarProps> = ({isHidden}) => {
                         )}
                     </div>
                 </div>
-            <div style={{display: isHidden ? 'none' : 'flex'}} onClick={() => setIsOpen(true)} className={styles.openBtn}>
-                <ArrowBackIosIcon className={styles.icon} />
-                <h3>Your last bets</h3>
-            </div>
+            {isMobile &&
+                <div style={{display: isHidden ? 'none' : 'flex'}} onClick={() => setIsOpen(true)} className={styles.openBtn}>
+                    <ArrowBackIosIcon className={styles.icon} />
+                    <h3>Your last bets</h3>
+                </div>}
             {isOpen && (
                 <div onClick={() => setIsOpen(false)} className={styles.overlay}></div>
             )}

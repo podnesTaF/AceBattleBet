@@ -24,7 +24,7 @@
 }
 
 .openBtn .icon {
-    transform: translateX(50px);
+  transform: translateX(50px);
 }
 
 .openBtn h3 {
@@ -34,15 +34,18 @@
 .container .hidden {
   visibility: hidden;
 }
+
 .container h1 {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 20px;
   color: #11111d;
 }
+
 .container .betWrap {
   list-style-type: none;
 }
+
 .container .betWrap .bet {
   margin: 10px;
   padding: 10px 20px;
@@ -61,7 +64,6 @@
     z-index: 12;
     animation: openBets 0.5s ease-in-out;
   }
-
   .overlay {
     position: fixed;
     top: 0;
@@ -73,33 +75,30 @@
     z-index: 10;
     overflow-y: scroll;
   }
-
   .openBtn {
     display: flex;
     flex-direction: column;
   }
 }
-
 @keyframes openBets {
   0% {
     transform: translateX(300px);
     opacity: 0;
   }
-
   100% {
     transform: translateX(0);
     opacity: 1;
   }
 }
-
 @keyframes closeBets {
   0% {
     transform: translateX(0);
     opacity: 1;
   }
-
   100% {
     transform: translateX(300px);
     opacity: 0;
   }
 }
+
+/*# sourceMappingURL=RightSidebar.module.css.map */

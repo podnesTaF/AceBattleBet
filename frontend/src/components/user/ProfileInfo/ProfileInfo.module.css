@@ -35,4 +35,14 @@
   color: gray;
 }
 
+@media screen and (max-width: 600px) {
+  .profile {
+    max-width: 400px;
+    width: 100%;
+  }
+  .profile .info {
+    width: 100%;
+  }
+}
+
 /*# sourceMappingURL=ProfileInfo.module.css.map */
