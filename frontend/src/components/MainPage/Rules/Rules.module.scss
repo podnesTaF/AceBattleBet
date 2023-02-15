@@ -27,3 +27,16 @@
     }
   }
 }
+
+@media screen and (max-width: 1400px) {
+  .rules {
+    .wrapper {
+      .rules__content {
+        background: none;
+        .text {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

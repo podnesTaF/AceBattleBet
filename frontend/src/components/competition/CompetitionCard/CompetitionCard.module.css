@@ -3,6 +3,21 @@
   position: relative;
   margin-bottom: 20px;
 }
+
+.card:hover .absBtn {
+  opacity: 1;
+}
+
+.absBtn {
+  opacity: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  padding: 10px 30px;
+  transition: opacity 0.3s ease-in-out;
+}
+
 .card .media {
   height: 300px;
   width: 100%;

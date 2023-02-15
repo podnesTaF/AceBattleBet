@@ -5,6 +5,7 @@ import {useMatches} from "@/hooks/useMatches";
 import Link from "next/link";
 import {useCompetitions} from "@/hooks/useCompetitions";
 import {useRouter} from "next/router";
+import clsx from "clsx";
 
 interface SideBarProps {
     isHidden?: boolean;
@@ -16,7 +17,7 @@ const SideBar: React.FC<SideBarProps> = ({isHidden}) => {
     const {competitions, setCompetitions} = useCompetitions()
 
     return (
-        <div className={styles.sidebar} style={{display: isHidden ? 'none' : 'block'}}>
+        <div className={clsx(styles.sidebar)} style={{display: isHidden ? 'none' : 'block'}}>
             <div className={styles.competitions}>
                 <h2>
                     Top Competitions

@@ -3,6 +3,23 @@
   position: relative;
   margin-bottom: 20px;
 
+  &:hover {
+    .absBtn {
+      opacity: 1;
+    }
+  }
+
+  .absBtn {
+    opacity: 0;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   .media {
     height: 300px;
     width: 100%;
@@ -11,6 +28,7 @@
     background-color: #1a1a2e;
     margin-bottom: 20px;
   }
+
   .content {
     position: absolute;
     top: 0;
@@ -18,23 +36,27 @@
     right: 0;
     height: 300px;
     background-color: rgba(0, 0, 0, 0.5);
+
     .location {
-        font-size: 20px;
-        font-weight: 700;
-        color: white;
-        margin: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      margin: 10px;
     }
+
     .title {
       position: absolute;
-        bottom: 20px;
+      bottom: 20px;
       right: 20px;
       text-align: right;
       color: white;
+
       h2 {
         font-size: 38px;
         font-weight: 700;
         margin-bottom: 10px;
       }
+
       p {
         font-size: 20px;
         font-weight: 400;
@@ -42,6 +64,7 @@
       }
     }
   }
+
   .wrapper {
     display: flex;
     margin: 32px;

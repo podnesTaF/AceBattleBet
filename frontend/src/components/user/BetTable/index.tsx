@@ -29,7 +29,7 @@ const BetTable: React.FC<BetTableProps> = ({bets, setPage, page, rowsPerPage, to
                 </TableHead>
                 <TableBody>
                     {bets && bets.map((bet) => (
-                        <BetsRow key={bet.id} coefficient={bet.attributes.coefficient} name={bet.attributes.match.data.attributes.name} type={bet.attributes.type} sum={bet.attributes.sum} team={bet.attributes.team.data.attributes.name} />
+                        <BetsRow key={bet.id} matchId={bet.attributes.match.data.id} coefficient={bet.attributes.coefficient} name={bet.attributes.match.data.attributes.name} type={bet.attributes.type} sum={bet.attributes.sum} team={bet.attributes.team.data.attributes.name} />
                     ))}
                 </TableBody>
             </Table>

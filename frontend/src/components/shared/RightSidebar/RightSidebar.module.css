@@ -7,6 +7,30 @@
   position: sticky;
   top: 0;
 }
+
+.openBtn {
+  display: none;
+  margin: 20px 10px 20px 0;
+  position: absolute;
+  cursor: pointer;
+  top: 80px;
+  right: 0;
+  align-items: center;
+  transform: translateX(15px);
+}
+
+.openBtn:hover {
+  color: #ff0000;
+}
+
+.openBtn .icon {
+    transform: translateX(50px);
+}
+
+.openBtn h3 {
+  transform: rotate(90deg) translate(60px, -45px);
+}
+
 .container .hidden {
   visibility: hidden;
 }
@@ -27,4 +51,55 @@
   border-radius: 10px;
 }
 
-/*# sourceMappingURL=RightSidebar.module.css.map */
+@media screen and (max-width: 1200px) {
+  .container {
+    position: fixed;
+    right: 0;
+    width: 300px;
+    top: 0;
+    height: 100%;
+    z-index: 12;
+    animation: openBets 0.5s ease-in-out;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+    z-index: 10;
+    overflow-y: scroll;
+  }
+
+  .openBtn {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@keyframes openBets {
+  0% {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes closeBets {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+}

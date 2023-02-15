@@ -26,4 +26,13 @@
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 1400px) {
+  .rules .wrapper .rules__content {
+    background: none;
+  }
+  .rules .wrapper .rules__content .text {
+    max-width: 100%;
+  }
+}
+
 /*# sourceMappingURL=Rules.module.css.map */

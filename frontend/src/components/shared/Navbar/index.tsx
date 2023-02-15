@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Image from "next/image";
 import styles from './Navbar.module.css'
 import {Button} from '@mui/material';
@@ -12,7 +12,7 @@ import AddCardIcon from '@mui/icons-material/AddCard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddBalance from "@/components/shared/AddBalance";
 
-const Routes = [
+export const Routes = [
     {
         name: 'Teams',
         pathname: '/teams'
@@ -32,6 +32,13 @@ const Navbar = () => {
     const userData = useAppSelector(selectUserData)
     const dispatch = useAppDispatch();
     const [open, setOpen] = React.useState(false);
+    const [isMobile, setIsMobile] = React.useState<boolean>()
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth < 1200)
+    }, []);
+
+
     const logout = () => {
         destroyCookie(null, 'authToken')
         dispatch(deleteUserData());
@@ -44,7 +51,7 @@ const Navbar = () => {
                 <Image src="/main-logo-abb.png" alt="main-logo" height={100} width={300}/>
             </Link>
             <ul className={styles.first}>
-                {Routes.map((route, i) => (
+                {!isMobile && Routes.map((route, i) => (
                     <li key={i}>
                         <Link className={route.pathname === router.pathname ? styles.active : ''} href={route.pathname}>
                             {route.name}

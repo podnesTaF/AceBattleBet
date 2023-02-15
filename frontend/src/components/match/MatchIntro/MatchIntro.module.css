@@ -44,4 +44,12 @@
   z-index: 1;
 }
 
+@media screen and (max-width: 680px) {
+  .matchIntro__teams {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+}
+
 /*# sourceMappingURL=MatchIntro.module.css.map */

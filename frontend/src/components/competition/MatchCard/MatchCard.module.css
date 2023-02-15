@@ -55,4 +55,17 @@
   transform: translateX(-50%);
 }
 
+@media screen and (max-width: 968px) {
+  .items {
+    flex-direction: column;
+  }
+  .items .item {
+    width: 100%;
+    margin: 0;
+  }
+  .items .item:first-child {
+    margin-bottom: 20px;
+  }
+}
+
 /*# sourceMappingURL=MatchCard.module.css.map */

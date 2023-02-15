@@ -54,3 +54,16 @@
     transform: translateX(-50%);
   }
 }
+
+@media screen and (max-width: 968px) {
+  .items {;
+    flex-direction: column;
+    .item {
+      width: 100%;
+      margin: 0;
+      &:first-child {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.downNavbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 10vh;
+  background-color: #fff;
+  border-top: 1px solid #e6e6e6;
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.downNavbar li {
+  list-style-type: none;
+}
+.downNavbar li a {
+  font-size: 24px;
+  color: gray;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+}
+.downNavbar li a:hover {
+  color: #ee342c;
+}
+.downNavbar li a:active {
+  transform: scale(0.95);
+}
+.downNavbar li a.active {
+  color: #ee342c;
+}
+
+/*# sourceMappingURL=MobileNavbar.module.css.map */

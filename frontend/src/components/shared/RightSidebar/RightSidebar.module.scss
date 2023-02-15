@@ -6,6 +6,9 @@
   height: 100vh;
   position: sticky;
   top: 0;
+  .content {
+    display: none;
+  }
   .hidden {
     visibility: hidden;
   }

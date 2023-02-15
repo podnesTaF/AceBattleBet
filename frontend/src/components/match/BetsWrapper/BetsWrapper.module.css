@@ -26,4 +26,11 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 1100px) {
+  .wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
 /*# sourceMappingURL=BetsWrapper.module.css.map */

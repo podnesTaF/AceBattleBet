@@ -2,10 +2,9 @@ import React from 'react';
 import {useRouter} from "next/router";
 import styles from './CompetitionCard.module.css'
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Image from 'next/image'
-import Typography from '@mui/material/Typography';
 import {ICompetitionsPageItem} from "@/models/competitions";
+import Button from "@mui/material/Button";
 
 
 interface CompetitionCardProps {
@@ -43,6 +42,9 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({competition}) => {
                     <p>teams</p>
                 </div>
             </div>
+            <Button className={styles.absBtn} variant='contained' color='secondary'>
+                See matches
+            </Button>
         </Card>
     );
 };

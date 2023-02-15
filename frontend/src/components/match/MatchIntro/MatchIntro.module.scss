@@ -43,3 +43,13 @@
     z-index: 1;
   }
 }
+
+@media screen and (max-width: 680px) {
+  .matchIntro {
+    &__teams {
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+  }
+}

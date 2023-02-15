@@ -37,4 +37,12 @@
   padding: 10px;
 }
 
+@media screen and (max-width: 1100px) {
+  .stat {
+    position: initial;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
 /*# sourceMappingURL=MatchTeamStat.module.css.map */

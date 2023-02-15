@@ -5,9 +5,11 @@ import IntroCard from "@/components/MainPage/IntroCard";
 import CompetitionCard from "@/components/competition/CompetitionCard/index";
 import {Api} from "@/api";
 import {GetServerSideProps, NextPage} from "next";
-import React from "react";
+import React, {useEffect} from "react";
 import Rules from "@/components/MainPage/Rules";
 import About from "@/components/MainPage/About";
+import RightSideBar from "@/components/shared/RightSidebar";
+import SideBar from '@/components/shared/Sidebar';
 
 const inter = Inter({subsets: ['latin']})
 
@@ -20,6 +22,13 @@ const content = [{name: 'Explore teams', color: 'white', position: 'left', id: 1
 
 
 const Home: NextPage = () => {
+    const [isMobile, setIsMobile] = React.useState<boolean>()
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth < 1200)
+    }, []);
+
+
 
     return (
         <>
@@ -34,7 +43,9 @@ const Home: NextPage = () => {
                         ))}
                     </div>
                     <About />
+                    {isMobile && <SideBar />}
                     <Rules />
+
                 </main>
             </MainLayout>
         </>
