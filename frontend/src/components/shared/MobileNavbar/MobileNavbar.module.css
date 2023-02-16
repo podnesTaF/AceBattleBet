@@ -17,7 +17,7 @@
   list-style-type: none;
 }
 .downNavbar li a {
-  font-size: 24px;
+  font-size: 1.5rem;
   color: gray;
   text-transform: uppercase;
   font-weight: 700;
@@ -31,12 +31,6 @@
 }
 .downNavbar li a.active {
   color: #ee342c;
-}
-
-@media screen and (max-width: 660px) {
-  .downNavbar li a {
-    font-size: 20px;
-  }
 }
 
 /*# sourceMappingURL=MobileNavbar.module.css.map */

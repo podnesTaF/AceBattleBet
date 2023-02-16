@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   align-items: center;
-  padding: 0 20px;
+  padding-left:20px;
   height: 70px;
   background-color: white;
   border-bottom: 1px solid lightgray;
@@ -50,5 +50,8 @@
     flex-direction: column;
     height: auto;
     padding-top: 16px;
+    ul {
+      margin-left: initial;
+    }
   }
 }

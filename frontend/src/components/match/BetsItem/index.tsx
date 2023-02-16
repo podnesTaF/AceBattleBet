@@ -10,12 +10,6 @@ interface BetsItemProps {
 
 const BetsItem: React.FC<BetsItemProps> = ({ width, betSum, betCoof, color}) => {
 
-
-    // useEffect(() => {
-    //     console.log(betCoof, betSum)
-    // }, []);
-
-
     return (
         <div className={styles.betsItem} style={{width: `${width}%`, backgroundColor: color}}>
             <h3>{betCoof.toFixed(2)}</h3>

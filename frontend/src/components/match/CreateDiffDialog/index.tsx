@@ -82,6 +82,10 @@ const CreateDiffDialog: React.FC<createDiffDialogProps> = ({setOpen, open, diffT
     };
 
     const handleClose = () => {
+        form.reset()
+
+        setPossibleWin(0)
+
         setOpen(false);
     };
 

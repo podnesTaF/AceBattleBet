@@ -29,14 +29,14 @@ const DifferenceItem: React.FC<DifferenceItemProps> = ({statement, team, openDia
                 <Button onClick={() => {
                     openDialog(statement.name, true)
                 }} className={styles.btn} color={"success"} variant={"outlined"}>
-                    {statement.agree.coefficient}
+                    {statement.agree.coefficient.toFixed(2)}
                 </Button>
             </TableCell>
             <TableCell>
                 <Button onClick={() => {
                     openDialog(statement.name, false)
                 }} className={styles.btn} color='error' variant={'outlined'}>
-                    {statement.disagree.coefficient}
+                    {statement.disagree.coefficient.toFixed(2)}
                 </Button>
             </TableCell>
         </TableRow>

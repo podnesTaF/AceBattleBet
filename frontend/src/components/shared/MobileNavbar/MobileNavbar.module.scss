@@ -17,7 +17,7 @@
     list-style-type: none;
 
     a {
-      font-size: 24px;
+      font-size: 1.5rem;
       color: gray;
       text-transform: uppercase;
       font-weight: 700;
@@ -33,16 +33,6 @@
 
       &.active {
         color: #ee342c;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 660px) {
-  .downNavbar {
-    li {
-      a {
-        font-size: 20px;
       }
     }
   }

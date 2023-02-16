@@ -43,7 +43,7 @@ export default function SignUp() {
             });
             setErrorMessage('');
             dispatch(setUserData(data.user));
-            router.back()
+            router.push('/')
         } catch (e: any) {
             setErrorMessage(e.response.data.message)
         }

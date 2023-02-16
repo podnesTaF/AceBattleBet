@@ -77,16 +77,13 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
             const bet = await Api().bets.create(data)
             const updatedUserData = await Api().user.updateMyBalance(userData!.id, userData!.balance - data.sum)
             dispatch(changeBalance(updatedUserData.balance))
-            console.log([+dto.team, dto.sum])
             dispatch(addBet([+dto.team, dto.sum]))
-            console.log(teams)
         } catch (e) {
             console.log(e)
         }
 
         handleClose()
         setIsVisible(true)
-
         setTimeout(() => {
             setIsVisible(false)
         }, 2000)
@@ -95,6 +92,8 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
     }
 
     const handleClose = () => {
+        form.reset()
+        setPossibleWin(0)
         setOpen(false);
     };
 

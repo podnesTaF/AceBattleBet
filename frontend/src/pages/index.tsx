@@ -10,6 +10,7 @@ import Rules from "@/components/MainPage/Rules";
 import About from "@/components/MainPage/About";
 import RightSideBar from "@/components/shared/RightSidebar";
 import SideBar from '@/components/shared/Sidebar';
+import {useIsMobile} from "@/hooks/useIsMobile";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -22,13 +23,7 @@ const content = [{name: 'Explore teams', color: 'white', position: 'left', id: 1
 
 
 const Home: NextPage = () => {
-    const [isMobile, setIsMobile] = React.useState<boolean>()
-
-    useEffect(() => {
-        setIsMobile(window.innerWidth < 1200)
-    }, []);
-
-
+    const isMobile = useIsMobile();
 
     return (
         <>

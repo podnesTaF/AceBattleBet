@@ -15,7 +15,7 @@ import {useAppDispatch, useAppSelector} from "@/hooks/useAppHooks";
 import {changeBalance, selectUserData} from "@/store/slices/userSlice";
 import styles from './AddBalance.module.css'
 import {Alert, AlertTitle} from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -62,6 +62,7 @@ const AddBalance: React.FC<AddBalanceProps> = ({open, setOpen}) => {
 
     const handleClose = () => {
         setOpen(false);
+        form.reset()
     };
 
     return (
@@ -80,7 +81,7 @@ const AddBalance: React.FC<AddBalanceProps> = ({open, setOpen}) => {
                 aria-describedby="alert-dialog-slide-description"
             >
                 <div className={styles.wrapper}>
-                    <DialogTitle className={styles.title}>{"Make your bet"}</DialogTitle>
+                    <DialogTitle className={styles.title}>{"Add money to balance"}</DialogTitle>
                     <FormProvider {...form}>
                         <Box component="form" onSubmit={form.handleSubmit(onSubmit)} sx={{mt: 2}}>
                             <Grid className={styles.item} item xs={12}>

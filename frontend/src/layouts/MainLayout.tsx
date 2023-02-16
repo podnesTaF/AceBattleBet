@@ -3,6 +3,7 @@ import Navbar from "@/components/shared/Navbar/index";
 import SideBar from "@/components/shared/Sidebar/index";
 import RightSideBar from "@/components/shared/RightSidebar/index";
 import MobileNavbar from "@/components/shared/MobileNavbar";
+import {useIsMobile} from "@/hooks/useIsMobile";
 
 
 interface MainLayoutProps {
@@ -13,11 +14,7 @@ interface MainLayoutProps {
     variant?: 'light' | 'dark';
 }
 const MainLayout: React.FC<MainLayoutProps> = ({children, rightSideBarHidden, sideBarHidden, variant}) => {
-    const [isMobile, setIsMobile] = React.useState<boolean>()
-
-    useEffect(() => {
-        setIsMobile(window.innerWidth < 1200)
-    }, [])
+    const isMobile = useIsMobile();
 
     return (
         <div className='full'>

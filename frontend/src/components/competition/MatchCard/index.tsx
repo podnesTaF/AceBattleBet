@@ -12,9 +12,6 @@ interface MatchCardProps {
 
 const MatchCard: React.FC<MatchCardProps> = ({match}) => {
     const router = useRouter()
-    useEffect(() => {
-        console.log('matches card render')
-    }, []);
 
     return (
         <div>

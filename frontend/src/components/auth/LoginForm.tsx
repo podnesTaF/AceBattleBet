@@ -37,7 +37,7 @@ export default function LoginForm() {
             setErrorMessage('');
             dispatch(setUserData(data.user));
 
-            router.back()
+            router.push('/')
         } catch (err: any) {
             console.log(err.response.data.message)
         }

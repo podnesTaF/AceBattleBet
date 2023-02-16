@@ -33,9 +33,20 @@
     .wrapper {
       .rules__content {
         background: none;
+        height: 100%;
         .text {
           max-width: 100%;
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .rules {
+    .wrapper {
+      .rules__content {
+        padding: 20px;
       }
     }
   }

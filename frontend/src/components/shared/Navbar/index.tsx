@@ -11,6 +11,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddBalance from "@/components/shared/AddBalance";
+import {useIsMobile} from "@/hooks/useIsMobile";
 
 export const Routes = [
     {
@@ -32,12 +33,7 @@ const Navbar = () => {
     const userData = useAppSelector(selectUserData)
     const dispatch = useAppDispatch();
     const [open, setOpen] = React.useState(false);
-    const [isMobile, setIsMobile] = React.useState<boolean>()
-
-    useEffect(() => {
-        setIsMobile(window.innerWidth < 1200)
-    }, []);
-
+    const isMobile = useIsMobile();
 
     const logout = () => {
         destroyCookie(null, 'authToken')

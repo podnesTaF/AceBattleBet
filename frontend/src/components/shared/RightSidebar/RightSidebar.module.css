@@ -80,6 +80,12 @@
     flex-direction: column;
   }
 }
+@media screen and (max-width: 660px) {
+  .openBtn {
+    top: 22vh;
+    transform: translateX(0);
+  }
+}
 @keyframes openBets {
   0% {
     transform: translateX(300px);

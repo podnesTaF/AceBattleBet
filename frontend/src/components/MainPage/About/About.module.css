@@ -1,5 +1,6 @@
 .wrapper {
   margin: 0 10px;
+  font-size: 16px;
 }
 .wrapper .content {
   display: flex;
@@ -11,16 +12,22 @@
   display: flex;
   justify-content: space-around;
   align-self: center;
-  padding: 60px 30px;
+  padding: 3.6rem 1.8rem;
+}
+.wrapper .content .intro img {
+  width: 9rem;
+  height: 10.6rem;
+  object-fit: cover;
 }
 .wrapper .content .intro .titles {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-self: center;
 }
 .wrapper .content .intro .titles h2 {
-  font-size: 42px;
+  font-size: 2.5rem;
   color: white;
   text-transform: uppercase;
 }
@@ -35,7 +42,7 @@
 .wrapper .content .text h3 {
   color: white;
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=About.module.css.map */

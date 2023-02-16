@@ -40,7 +40,9 @@ const PlayerList: React.FC<PlayerListProps> = () => {
                     </TableRow>
                 </ TableHead>
                 <TableBody>
-                    {isLoading && <p>Loading...</p>}
+                    {isLoading && <TableRow>
+                        <TableCell>Loading...</TableCell>
+                    </TableRow>}
                     {data && data.data.map((player) => (
                        <PlayerItem key={player.id} player={player} />
                     ))}

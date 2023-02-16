@@ -29,9 +29,15 @@
 @media screen and (max-width: 1400px) {
   .rules .wrapper .rules__content {
     background: none;
+    height: 100%;
   }
   .rules .wrapper .rules__content .text {
     max-width: 100%;
+  }
+}
+@media screen and (max-width: 660px) {
+  .rules .wrapper .rules__content {
+    padding: 20px;
   }
 }
 

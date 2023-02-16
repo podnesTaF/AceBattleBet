@@ -10,8 +10,8 @@ export const getSumAmount = (teamId: number, bets: IBet[]) => {
 }
 
 export const getWinCofs = (teamOne_sum: number, teamTwo_sum: number) => {
-    const biggerSum = Math.max(teamOne_sum, teamTwo_sum);
-    const smallerSum = Math.min(teamOne_sum, teamTwo_sum);
+    const biggerSum = Math.max(teamOne_sum, teamTwo_sum) + 1000;
+    const smallerSum = Math.min(teamOne_sum, teamTwo_sum) + 1000;
     const biggerSumCoof = +(smallerSum / biggerSum).toFixed(2) + 1
     const smallerSumCoof = +((biggerSum + smallerSum) / smallerSum).toFixed(2)
 
@@ -34,7 +34,7 @@ export const getWinCofs = (teamOne_sum: number, teamTwo_sum: number) => {
     } else {
         if(biggerSumCoof === 1) {
             return [
-                1.05,
+                1.2,
                 12.50
             ]
         }
