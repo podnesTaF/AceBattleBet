@@ -1,5 +1,5 @@
 ﻿# AceBattleBet
-
+ 
 ## Introduction
 
 Beta version of betting web application for AB (Ace Battle) Association.
@@ -14,6 +14,11 @@ Beta version of betting web application for AB (Ace Battle) Association.
 - User statistics / bet history / profile
 - Coefficients are counted by a special formula
 - Balance can be added per free;
+
+## What in prospective?
+- Rewrite on nestJs
+- WebSockets communication for udating bets coefs on all connected clients.
+- Results when a match was finished, update users balance after depend on the result of the match.
 
 ## Installation
 - Clone the repository
