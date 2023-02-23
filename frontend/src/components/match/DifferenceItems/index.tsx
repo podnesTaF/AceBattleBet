@@ -22,9 +22,10 @@ interface DifferenceItemsProps {
     team: 0 | 1;
     matchId: number;
     teams: string[];
+    socket: any;
 }
 
-const DifferenceItems: React.FC<DifferenceItemsProps> = ({bets, id, team, matchId, teams}) => {
+const DifferenceItems: React.FC<DifferenceItemsProps> = ({bets, id, team, matchId, teams, socket}) => {
     const [structuredBets, setStructuredBets] = React.useState<{id: number, statements: differenceStates[]}>(structureDifferenceBets(bets, id));
     const [open, setOpen] = React.useState(false);
     const [diffType, setDiffType] = React.useState<differenceTypes>();
@@ -77,7 +78,7 @@ const DifferenceItems: React.FC<DifferenceItemsProps> = ({bets, id, team, matchI
                     ))}
                 </TableBody>
             </Table>
-            {userData && <CreateDiffDialog setOpen={setOpen} open={open} matchId={matchId} diffTeamId={id} diffType={diffType || differenceTypes.less5} agree={agree} />}
+            {userData && <CreateDiffDialog socket={socket} setOpen={setOpen} open={open} matchId={matchId} diffTeamId={id} diffType={diffType || differenceTypes.less5} agree={agree} />}
         </div>
     );
 };

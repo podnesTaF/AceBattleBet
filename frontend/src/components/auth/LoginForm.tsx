@@ -39,7 +39,8 @@ export default function LoginForm() {
 
             router.push('/')
         } catch (err: any) {
-            console.log(err.response.data.message)
+            console.log(err)
+            setErrorMessage(err.response?.data?.message)
         }
     };
 

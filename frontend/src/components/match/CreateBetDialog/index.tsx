@@ -38,13 +38,13 @@ interface CreateBetDialogProps {
     open: boolean;
     setOpen: Function;
     matchId: number
+    socket: any
 }
 
-const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open, setOpen, matchId}) => {
+const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open, setOpen, matchId, socket}) => {
     const [isVisible, setIsVisible] = useState(false);
     const [sum, setSum] = useState(0);
     const [teamId, setTeamId] = useState(0);
-
     const [possibleWin, setPossibleWin] = useState(0);
 
     useEffect(() => {
@@ -77,7 +77,13 @@ const CreateBetDialog: React.FC<CreateBetDialogProps> = ({teamOne, teamTwo, open
             const bet = await Api().bets.create(data)
             const updatedUserData = await Api().user.updateMyBalance(userData!.id, userData!.balance - data.sum)
             dispatch(changeBalance(updatedUserData.balance))
-            dispatch(addBet([+dto.team, dto.sum]))
+            // dispatch(addBet([+dto.team, dto.sum]))
+
+            socket.current.emit('addBet', {
+                team: +dto.team,
+                sum: dto.sum,
+            })
+
         } catch (e) {
             console.log(e)
         }

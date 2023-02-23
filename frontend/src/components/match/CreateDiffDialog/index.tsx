@@ -27,9 +27,10 @@ interface createDiffDialogProps {
     diffTeamId: number;
     diffType: differenceTypes;
     agree: boolean;
+    socket: any
 }
 
-const CreateDiffDialog: React.FC<createDiffDialogProps> = ({setOpen, open, diffTeamId, diffType, matchId, agree}) => {
+const CreateDiffDialog: React.FC<createDiffDialogProps> = ({setOpen, open, diffTeamId, diffType, matchId, agree, socket}) => {
     const [sum, setSum] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const [possibleWin, setPossibleWin] = useState(0);
@@ -68,7 +69,10 @@ const CreateDiffDialog: React.FC<createDiffDialogProps> = ({setOpen, open, diffT
             const bet = await Api().bets.create(data)
             const updatedUserData = await Api().user.updateMyBalance(userData!.id, userData!.balance - data.sum)
             dispatch(changeBalance(updatedUserData.balance))
-            dispatch(addBet({teamId: diffTeamId, type: diffType, agree, sum: +data.sum}))
+            // dispatch(addBet({teamId: diffTeamId, type: diffType, agree, sum: +data.sum}))
+            socket.current.emit('addDiffBet', {
+                teamId: diffTeamId, type: diffType, agree, sum: +data.sum
+            })
         } catch (e) {
             console.log(e)
         }

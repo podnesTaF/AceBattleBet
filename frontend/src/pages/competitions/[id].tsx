@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import MainLayout from "@/layouts/MainLayout";
-import axios from "axios";
 import Matches from "@/components/competition/Matches/index";
 import CompetitionIntro from "@/components/competition/CompetitionIntro";
 import {GetServerSideProps, NextPage} from "next";

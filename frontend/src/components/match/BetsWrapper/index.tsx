@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from './BetsWrapper.module.css'
 import BetsItem from "@/components/match/BetsItem";
 import {IBet} from "@/utils/types/bet";
@@ -6,11 +6,14 @@ import {IMatch} from "@/utils/types/match";
 import {getSumAmount, getWinCofs, getBetsPercentage} from "@/utils/betsAlgoth";
 import CreateBetDialog from "@/components/match/CreateBetDialog";
 import {useAppDispatch, useAppSelector} from "@/hooks/useAppHooks";
-import {selectTeams, setCoefficients, setSum, setTeamIds, setWidth} from "@/store/slices/betSlice";
+import {addBet, selectTeams, setCoefficients, setSum, setTeamIds, setWidth} from "@/store/slices/betSlice";
+import {addBet as addDiffBet} from "@/store/slices/differenceSlice";
 import {ResponseFullMatch} from "@/models/match";
 import {getIMatch} from "@/utils/match";
 import DifferenceItems from "@/components/match/DifferenceItems";
 import {selectUserData} from "@/store/slices/userSlice";
+import {io} from "socket.io-client";
+import {differenceTypes} from "@/store/slices/differenceSlice";
 interface BetsWrapperProps {
     data: ResponseFullMatch;
     bets: IBet[];
@@ -23,10 +26,22 @@ const BetsWrapper: React.FC<BetsWrapperProps> = ({data, bets}) => {
     const [open, setOpen] = useState(false)
     const [match, setMatch] = useState<IMatch>(getIMatch(data));
     const [diffBets, setDiffBets] = useState<IBet[]>(bets.filter(bet => bet.type === 'difference'));
+    const socket = useRef<any>()
 
     useEffect(() => {
        setMatch(getIMatch(data));
         // eslint-disable-next-line
+    }, []);
+
+    useEffect(() => {
+        socket.current = io('ws://localhost:4000')
+        socket.current.on('getBets', (data: { team: number, sum: number }) => {
+            dispatch(addBet([data.team, data.sum]))
+        })
+        socket.current.on('getDiffBets', (data: {teamId: number, type: differenceTypes, agree: boolean, sum: number}) => {
+            console.log(data)
+            dispatch(addDiffBet({...data}))
+        })
     }, []);
 
 
@@ -47,10 +62,10 @@ const BetsWrapper: React.FC<BetsWrapperProps> = ({data, bets}) => {
                     <BetsItem betCoof={teams[1].coefficient} betSum={teams[1].sum} width={teams[1].width} color={'gold'} />
                 </div>
                 <h2 className={styles.differenceTitle}>Difference</h2>
-                <DifferenceItems teams={[match.team_one.attributes.name, match.team_two.attributes.name]} matchId={match.id} team={0} bets={diffBets.filter(bet => bet.team.id === match.team_one.id)} id={match.team_one.id} />
-                <DifferenceItems teams={[match.team_one.attributes.name, match.team_two.attributes.name]} matchId={match.id} team={1} id={match.team_two.id} bets={diffBets.filter(bet => bet.team.id === match.team_two.id)} />
+                <DifferenceItems socket={socket} teams={[match.team_one.attributes.name, match.team_two.attributes.name]} matchId={match.id} team={0} bets={diffBets.filter(bet => bet.team.id === match.team_one.id)} id={match.team_one.id} />
+                <DifferenceItems socket={socket} teams={[match.team_one.attributes.name, match.team_two.attributes.name]} matchId={match.id} team={1} id={match.team_two.id} bets={diffBets.filter(bet => bet.team.id === match.team_two.id)} />
             </div>
-            {userData && <CreateBetDialog matchId={match.id} open={open} setOpen={setOpen} teamOne={match.team_one} teamTwo={match.team_two} />}
+            {userData && <CreateBetDialog socket={socket} matchId={match.id} open={open} setOpen={setOpen} teamOne={match.team_one} teamTwo={match.team_two} />}
         </div>
     );
 };

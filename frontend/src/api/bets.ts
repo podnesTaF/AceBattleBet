@@ -6,7 +6,6 @@ export const BetsApi = (instance: AxiosInstance) => ({
         const {data: {data}} = await instance.post('/bets', {data: dto});
         return data;
     },
-
     async getBetsByUser(id: number) {
         const {data: {data}} = await instance.get('/bets?filters[user][id][$eq]=' + id + "&sort=id:desc&pagination[pageSize]=10");
         const bets = data.map((bet: any) => ({
@@ -16,3 +15,4 @@ export const BetsApi = (instance: AxiosInstance) => ({
         return bets
     }
 })
+

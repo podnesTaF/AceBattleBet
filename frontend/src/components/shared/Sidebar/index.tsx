@@ -5,6 +5,7 @@ import {useMatches} from "@/hooks/useMatches";
 import Link from "next/link";
 import {useCompetitions} from "@/hooks/useCompetitions";
 import {useRouter} from "next/router";
+import {io} from "socket.io-client";
 import clsx from "clsx";
 
 interface SideBarProps {
@@ -15,6 +16,7 @@ const SideBar: React.FC<SideBarProps> = ({isHidden}) => {
     const router = useRouter()
     const {matches, setMatches} = useMatches()
     const {competitions, setCompetitions} = useCompetitions()
+    const socket = io('http://localhost:4000')
 
     return (
         <div className={clsx(styles.sidebar)} style={{display: isHidden ? 'none' : 'block'}}>

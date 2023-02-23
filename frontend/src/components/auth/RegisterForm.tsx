@@ -45,7 +45,8 @@ export default function SignUp() {
             dispatch(setUserData(data.user));
             router.push('/')
         } catch (e: any) {
-            setErrorMessage(e.response.data.message)
+            console.log(e)
+            setErrorMessage(e.response?.data?.message)
         }
     };
 

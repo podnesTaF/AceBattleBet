@@ -1,9 +1,7 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, Dispatch, PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from '../';
 import {HYDRATE} from 'next-redux-wrapper';
 import {getWinCofs, getBetsPercentage} from "@/utils/betsAlgoth";
-import {differenceTypes} from "@/store/slices/differenceSlice";
-
 interface MatchBetsState {
     team_one: {
         id: number | null,
@@ -66,7 +64,7 @@ export const betsSlice = createSlice({
             const width = getBetsPercentage([state.team_one.sum, state.team_two.sum])
             state.team_one.width = width[0];
             state.team_two.width = width[1];
-        }
+        },
     },
     extraReducers: {
         [HYDRATE]: (state, action) => {
