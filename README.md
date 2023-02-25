@@ -4,6 +4,7 @@
 
 Beta version of betting web application for AB (Ace Battle) Association.
 - v0.2 - added mobile view, improved ux and added more logical algorithms with bets.
+- v0.3 - implemented web sockets for all kind of bets.
 
 ### At the moment there are several bet types implemented:
 - Bet on the winner of the match
